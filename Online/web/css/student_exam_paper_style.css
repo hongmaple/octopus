@@ -1,0 +1,150 @@
+body {
+	background: #e7e5e0;
+	margin: 0;
+	padding: 0;
+}
+
+#content {
+	width: 80%;
+	background: #FFF;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#content #top {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#content #top h1 {
+	margin-top: 0;
+	padding-top: 1em;
+}
+
+#content #paper {
+	width: 80%;
+	margin: auto;
+}
+
+#content #paper form {
+	margin-bottom: 0;
+}
+
+#content #paper form div {
+	font-size: 16px;
+	line-height: 24px;
+	vertical-align: middle;
+}
+
+#content #paper #examEnd {
+	background-color: #2f3542;
+	color: #FFF;
+	border: none;
+	padding: 10px 30px;
+	border-radius: 4px;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px #a4b0be;
+	margin-bottom: 6em;
+}
+
+#content #paper #examEnd:hover {
+	background-color: #747d8c;
+	color: #FFF;
+}
+
+#content #paper input[type="text"] {
+	color: #525252;
+	height: 30px;
+	line-height: 18px;
+	border-radius: 2px;
+	background: #FFF;
+	width: 35%;
+	padding: 0 6px;
+	border: 1px solid #747d8c;
+}
+
+#content #paper textarea {
+	font-size: 18px;
+}
+
+#paperForm > div.que{
+	padding:6px;
+	height:12rem;
+	position: relative;
+	vertical-align: bottom;
+}
+.que > div.option{
+	position: absolute;
+	
+}
+.que > div.img{
+	display:inline-block;
+	float:right;
+	margin-top:0;
+	margin-right:10%;
+	height:75%;
+	border-radius: 8px;
+}
+#paperForm > div.que > div.img > img{
+	float:right;
+	height:100%;
+	width:240px;
+	object-fit:cover;
+	border-radius: 8px;
+	border-right:1px solid #e7e5e0;
+}
+
+#showTime{
+	position:fixed;
+	top:10px;
+	z-index:999;
+	border-radius:0 20px 20px 0;
+	width:130px;
+	padding:px;
+	background: #57606f;
+	box-shadow: 10px 10px 5px #888888,
+	inset -6px 0px 6px -6px #888;
+	padding:10px;
+}
+
+#queNav{
+	position:fixed;
+	top:120px;
+	z-index:999;
+	padding:12px 0 20px 0;
+	border-radius:0 26px 26px 0;
+	width:150px;
+	heigth:800px;
+	background: #57606f;
+	box-shadow: 10px 10px 5px #888,
+	inset -6px 0px 6px -6px #888;
+}
+.navs{
+	line-height: 24px;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	color:#FFF;
+	margin:4px 0;
+}
+#queNav a{
+	background-color: #57606f;
+	display: block;
+	padding: 2px 10px 6px 30px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: 400;
+	box-shadow: inset -6px 0px 6px -6px #888;
+}
+#queNav a:hover{
+	background-color: #e7e5e0;
+	padding: 2px 4px 6px 16px;
+	color: #000; 
+	text-align:center;
+	width:116px;
+	border-left:14px solid #57606f;
+	box-shadow:inset -6px 0px 6px -6px #000,
+	inset 6px 0px 6px -6px #000;
+	font-weight: 800;
+	 
+}

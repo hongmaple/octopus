@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.macbook.core.dao.ManagerUserDao">
+<!--sql片段-->
+    <sql id="selectUserListWhere">
+        <where>
+            <if test="sno != null">
+                sno = #{sno}
+            </if>
+            <if test="name != null">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="identity != null">
+                and identity = #{identity}
+            </if>
+            <if test="college != null">
+                and college = #{college}
+            </if>
+        </where>
+    </sql>
+<!--查询用户表-->
+    <select id="selectUserList" parameterType="user" resultType="user">
+        select *
+        from user
+        <include refid="selectUserListWhere"/>
+        <!--执行分页查询-->
+        <if test="start != null and rows != null">
+            limit #{start},#{rows}
+        </if>
+    </select>
+<!--查询用户总数-->
+    <select id="selectUserListCount" parameterType="user" resultType="Integer">
+        select count(*) from user
+        <include refid="selectUserListWhere"/>
+    </select>
+<!--删除用户-->
+    <delete id="deleteUser" parameterType="String">
+        delete from user where sno = #{sno}
+    </delete>
+<!--新建用户-->
+    <insert id="createManagerUser" parameterType="user">
+        insert into user (
+                        sno,
+                        name,
+                        password,
+                        phone,
+                        sex,
+                        identity,
+                        college
+        )
+        values (
+             #{sno},
+             #{name},
+             #{password},
+             #{phone},
+             #{sex},
+             #{identity},
+             #{college}
+        )
+    </insert>
+<!--更新前查询用户-->
+    <select id="findManagerUserBySno" parameterType="String" resultType="user">
+        select * from user where sno = #{sno}
+    </select>
+<!--更新用户信息-->
+    <update id="updateManagerUser" parameterType="user">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="identity != null">
+                identity = #{identity},
+            </if>
+            <if test="college != null">
+                college = #{college},
+            </if>
+        </set>
+        where sno = #{sno}
+    </update>
+</mapper>

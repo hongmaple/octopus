@@ -1,0 +1,158 @@
+
+body{
+	background:radial-gradient(ellipse, white, #D3D3D3);
+}
+input.text {
+	BACKGROUND-COLOR: transparent;
+	width: 100%;
+	height: 100%;
+}
+
+input.text1 {
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+input[type=button] {
+	font:8px;
+	margin:0;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px #a4b0be;
+}
+
+input[type=button]:nth-child(1):hover {
+	background: #151515;
+	color: white;
+}
+
+input[type=button]:nth-child(2):hover {
+	background: red;
+	color: white;
+}
+
+.file {
+	position: relative;
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px #a4b0be;
+	text-decoration: none;
+	background: #a4b0be;
+	color: black;
+}
+
+.file input {
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.file:hover {
+	text-decoration: none;
+	background: #555;
+	color: white;
+}
+
+table {
+	width: 95%;
+	margin: 2em auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border-style: hidden;
+	border-bottom: 1px solid #151515;
+}
+
+table caption {
+	background-color: #555;
+	color: #fff;
+	font-size: x-large;
+	font-weight: bold;
+	letter-spacing: .3em;
+}
+
+table tr {
+	line-height: 18px;
+	font-size: 16px;
+	height: 34px;
+}
+
+table td {
+	padding: 2px 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+table td.short {
+	width: 5%;
+}
+
+table td.med {
+	width: 9%;
+}
+
+table td.long {
+	width: 20%;
+}
+table td.score {
+	width:8%;
+}
+
+
+#q_type {
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	appearance: none;
+	-webkit-appearance: none;
+	background: url("../images/dragdown.png") no-repeat right center
+		transparent;
+	background-size: 18px;
+	padding-right: 18px;
+}
+table > tbody > tr td input[type=submit],#queryForm > input[type=submit]{
+	background: #FFCC02;
+	padding: 2px 10px;
+	border-radius: 4px;
+	font-weight: bold;
+	border: none;
+	box-shadow: 1px 1px 1px #888;
+}
+table > tbody > tr td input[type=submit]:hover,#queryForm > input[type=submit]:hover{
+	background: #151515;
+	color: white;
+}
+table > caption > span{
+	font-size: 16px;
+	letter-spacing:.1em;
+	font-weight:400
+}
+
+table > tbody > tr td > b > input[type=text],#queryForm > input[type=text]{
+	border-radius:4px;
+	box-shadow:none;
+	padding:0 1px;
+	margin-left: 10px;
+}
+#btn_excel{
+	font-size:14px;
+	color:#eef7f2;
+	background: #207f4c;
+	padding: 2px 10px;
+	border-radius:6px;
+	text-decoration: none;
+	letter-spacing:0;
+	margin: 4px;
+}
+#btn_excel:hover{
+	background-color:#3c9566 ;
+	color:#FFF;
+}
+

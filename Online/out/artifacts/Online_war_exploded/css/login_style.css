@@ -1,0 +1,44 @@
+body{
+    background-image: url("../images/background1.jpg");
+    background-repeat:no-repeat ;
+    background-size:100% 100%;
+    background-attachment: fixed;
+}
+.headfontsize{
+    margin-left:30px;
+}
+.headh1content{
+    margin-top: 150px;
+    line-height: 75px;
+    font-size: 40pt;
+    color: #ffffff;
+}
+.headh2content{
+    margin-top: 30px;
+    line-height: 60px;
+    font-size: 25pt;
+    color: #ffffff;
+}
+#login{
+    /* background:radial-gradient(ellipse, white, #ddedfe); */
+    background:rgba(221,237,254,0.6);
+    border-radius: 20px;
+    /*margin-top: 10px;*/
+    height: 400px;
+}
+.turn{
+    margin-left:50px;
+}
+.buttons{
+    margin-top:15px;
+    margin-left:30px;
+}
+#sub{
+    margin-right:70px;
+}
+
+
+#myAlert{
+    margin-top:100px;
+    opacity: 0.6;
+}

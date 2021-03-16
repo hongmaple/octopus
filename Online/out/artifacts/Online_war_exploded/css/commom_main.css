@@ -1,0 +1,12 @@
+@charset "UTF-8";
+body{
+	width:2000px;
+	margin:0px;
+	padding:0px;
+}
+#top{
+	height:200px;
+	width:1600px;
+	margin-left:200px;
+	margin-right:200px;
+}

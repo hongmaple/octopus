@@ -1,0 +1,45 @@
+body{
+	background:radial-gradient(ellipse, white, #D3D3D3);
+}
+
+#div {
+	padding: 2em 10em;
+	padding-left:10em;
+	width:60%;
+	font-size: 16px;
+	line-height: 24px;
+}
+#divmin {
+	padding: 2em 10em;
+	width: 30%;
+}
+
+legend {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+td {
+	font-size: 20px;
+}
+
+.btn {
+	width: 20%;
+	height: 30px;
+	line-height: 20px;
+	font-size: 20px;
+}
+
+.btn input {
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px #a4b0be;
+	border: none;
+	background-color: #747d8c;
+	color: #FFF;
+}
+.btn input:hover{
+	background-color: #2f3542;
+	color: #FFF;
+}

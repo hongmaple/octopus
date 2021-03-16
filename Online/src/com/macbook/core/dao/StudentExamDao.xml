@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.macbook.core.dao.StudentExamDao">
+
+    <select id="findPaperById" parameterType="Integer" resultType="paper">
+        select * from paper
+        where id = #{id}
+    </select>
+
+    <select id="findQuestion" resultType="question">
+        select * from question
+    </select>
+
+    <select id="examCount" parameterType="score" resultType="Integer">
+        select count(*) from score
+        where user_sno = #{user_sno} and paper_id = #{paper_id}
+        group by user_sno,paper_id
+
+    </select>
+
+</mapper>

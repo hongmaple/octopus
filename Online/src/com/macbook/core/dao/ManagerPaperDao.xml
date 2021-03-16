@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.macbook.core.dao.ManagerPaperDao">
+    <!--sql片段-->
+    <sql id="selectPaperListWhere">
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="qty_name != null">
+                and qty_name like concat('%',#{qty_name},'%')
+            </if>
+            <if test="qty_time != null">
+                and qty_time = #{qty_time}
+            </if>
+        </where>
+    </sql>
+    <!--查询试卷列表-->
+    <select id="selectPaperList" parameterType="paper" resultType="paper">
+        select *
+        from paper
+        <include refid="selectPaperListWhere"/>
+        <!--执行分页查询-->
+        <if test="start != null and rows != null">
+            limit #{start},#{rows}
+        </if>
+    </select>
+    <!--查询试卷总数-->
+    <select id="selectPaperListCount" parameterType="paper" resultType="Integer">
+        select count(*) from paper
+        <include refid="selectPaperListWhere"/>
+    </select>
+    <!--新建试卷信息-->
+    <insert id="createManagerPaper" parameterType="paper">
+        insert into paper(
+                        id,
+                        qty_name,
+                        qty_time,
+                        qty_sing,
+                        qty_muti,
+                        qty_jud,
+                        qty_fill,
+                        qty_ess
+        )
+        values(
+                #{id},
+                #{qty_name},
+                #{qty_time},
+                #{qty_sing},
+                #{qty_muti},
+                #{qty_jud},
+                #{qty_fill},
+                #{qty_ess}
+        )
+    </insert>
+<!--删除试卷-->
+    <delete id="deleteManagerPaper" parameterType="Integer">
+        delete from paper where id = #{id}
+    </delete>
+<!--修改前查找试卷-->
+    <select id="findManagerPaperById" parameterType="Integer" resultType="paper">
+        select * from paper where id = #{id}
+    </select>
+<!--修改试卷信息-->
+    <update id="updateManagerPaper" parameterType="paper">
+        update paper
+        <set>
+            <if test="qty_name != null">
+                qty_name = #{qty_name},
+            </if>
+            <if test="qty_time != null">
+                qty_time = #{qty_time},
+            </if>
+            <if test="qty_sing != null">
+                qty_sing = #{qty_sing},
+            </if>
+            <if test="qty_muti != null">
+                qty_muti = #{qty_muti},
+            </if>
+            <if test="qty_jud != null">
+                qty_jud = #{qty_jud},
+            </if>
+            <if test="qty_fill != null">
+                qty_fill = #{qty_fill},
+            </if>
+            <if test="qty_ess != null">
+                qty_ess = #{qty_ess},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="findPaper" resultType="paper">
+        select * from Paper
+    </select>
+</mapper>
