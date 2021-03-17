@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" lang="zh">
+<head>
+    <th:block th:include="include :: header('班级课程列表')"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            <p>班级名：</p>
+                            <select name="classCourseClassId" th:with="type=${@EduClass.selectEduClassList(null)}">
+                                <option value="">所有</option>
+                                <option th:each="EduClass : ${type}" th:text="${EduClass.getClassName()}"
+                                        th:value="${EduClass.getClassId()}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>任课教师：</p>
+                            <select name="classCourseTeacherid" th:with="type=${@EduTeacher.selectEduTeacherList(null)}">
+                                <option value="">所有</option>
+                                <option th:each="EduTeacher : ${type}" th:text="${EduTeacher.getTeacherName()}"
+                                        th:value="${EduTeacher.getTeacherId()}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>课程名：</p>
+                            <select name="classCourseCourseId" th:with="type=${@Course.selectEduCourseList(null)}">
+                                <option value="">所有</option>
+                                <option th:each="Course : ${type}" th:text="${Course.getCourseName()}"
+                                        th:value="${Course.getCourseId()}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="edusystem:ClassCourse:add">
+                <i class="fa fa-plus"></i> 添加
+            </a>
+            <a class="btn btn-primary single disabled" onclick="$.operate.edit()"
+               shiro:hasPermission="edusystem:ClassCourse:edit">
+                <i class="fa fa-edit"></i> 修改
+            </a>
+            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()"
+               shiro:hasPermission="edusystem:ClassCourse:remove">
+                <i class="fa fa-remove"></i> 删除
+            </a>
+            <a class="btn btn-warning" onclick="$.table.exportExcel()"
+               shiro:hasPermission="edusystem:ClassCourse:export">
+                <i class="fa fa-download"></i> 导出
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('edusystem:ClassCourse:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('edusystem:ClassCourse:remove')}]];
+    var prefix = ctx + "edusystem/ClassCourse";
+
+    //保存所有班级
+    var EduClassMap = new Map();
+    function selectEduClassList() {
+        //获取所有班级
+        var EduClassList = [[${@EduClass.selectEduClassList(null)}]];
+        $(EduClassList).each(function () {
+            EduClassMap.set(this.classId, this.className);
+        });
+    }
+    //保存所有教师
+    var EduTeacherMap = new Map();
+    function selectEduTeacherList() {
+        //获取所有教师
+        var EduTeacherList = [[${@EduTeacher.selectEduTeacherList(null)}]];
+        $(EduTeacherList).each(function () {
+            EduTeacherMap.set(this.teacherId, this.teacherName);
+        });
+    }
+    var CoursMap = new Map();
+    function queryCoursMap() {
+        //获取所课程
+        var CourseList = [[${@Course.selectEduCourseList(null)}]];
+        $(CourseList).each(function () {
+            CoursMap.set(this.courseId, this.courseName);
+        });
+    }
+
+    $(function () {
+        selectEduClassList();
+        selectEduTeacherList();
+        queryCoursMap();
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "班级课程",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'classCourseId',
+                    title: '班级课程ID',
+                    visible: false
+                },
+                {
+                    field: 'classCourseClassId',
+                    title: '班级名',
+                    formatter: function (value, row, index) {
+                        return EduClassMap.get(row.classCourseId);
+                    }
+                },
+                {
+                    field: 'classCourseTeacherid',
+                    title: '任课教师',
+                    formatter: function (value, row, index) {
+                        return EduTeacherMap.get(row.classCourseTeacherid);
+                    }
+                },
+                {
+                    field: 'classCourseCourseId',
+                    title: '课程名',
+                    formatter: function (value, row, index) {
+                        return CoursMap.get(row.classCourseCourseId);
+                    }
+                },
+                {
+                    field: 'createTime',
+                    title: '创建时间'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.classCourseId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.classCourseId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

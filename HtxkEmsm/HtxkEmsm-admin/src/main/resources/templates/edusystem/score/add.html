@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('新增课程分数')"/>
+    <th:block th:include="include :: select2-css"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-score-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">学生姓名：</label>
+            <div class="col-sm-8">
+                <select name="scoreStudentid" class="form-control m-b" required
+                        th:with="type=${@Student.selectEduStudentList(null)}">
+                    <option value="">请选择</option>
+                    <option th:each="Student : ${type}" th:text="${Student.getStudentName()}"
+                            th:value="${Student.getStudentId()}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">课程名：</label>
+            <div class="col-sm-8">
+                <select name="classCourseCourseId" class="form-control m-b" required
+                        th:with="type=${@Course.selectEduCourseList(null)}">
+                    <option value="">请选择</option>
+                    <option th:each="Course : ${type}" th:text="${Course.getCourseName()}"
+                            th:value="${Course.getCourseId()}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">分数：</label>
+            <div class="col-sm-8">
+                <input name="score" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">考试描述：</label>
+            <div class="col-sm-8">
+                <textarea name="describe" class="form-control"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: select2-js"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/score"
+    $("#form-score-add").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-score-add').serialize());
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+com\htxk\ruoyi\generator\config\GenConfig.class
+com\htxk\ruoyi\generator\controller\GenController.class
+com\htxk\ruoyi\generator\mapper\GenTableMapper.class
+com\htxk\ruoyi\generator\domain\GenTableColumn.class
+com\htxk\ruoyi\generator\domain\GenTable.class
+com\htxk\ruoyi\generator\service\impl\GenTableColumnServiceImpl.class
+com\htxk\ruoyi\generator\mapper\GenTableColumnMapper.class
+com\htxk\ruoyi\generator\service\impl\GenTableServiceImpl.class
+com\htxk\ruoyi\generator\util\GenUtils.class
+com\htxk\ruoyi\generator\util\VelocityInitializer.class
+com\htxk\App.class
+com\htxk\ruoyi\generator\service\IGenTableService.class
+com\htxk\ruoyi\generator\service\IGenTableColumnService.class
+com\htxk\ruoyi\generator\util\VelocityUtils.class

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduTeacherMapper">
+
+    <resultMap type="EduTeacher" id="EduTeacherResult">
+        <result property="teacherId" column="teacher_id"/>
+        <result property="teacherName" column="teacher_name"/>
+        <result property="sysUserId" column="sys_user_id"/>
+        <result property="education" column="Education"/>
+        <result property="academicTitle" column="academic_title"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="selectEduTeacherVo">
+        select teacher_id, teacher_name, sys_user_id, Education, academic_title, status from edu_teacher
+    </sql>
+
+    <select id="selectEduTeacherList" parameterType="EduTeacher" resultMap="EduTeacherResult">
+        <include refid="selectEduTeacherVo"/>
+        <where>
+            <if test="teacherName != null  and teacherName != ''">and teacher_name like concat('%', #{teacherName},
+                '%')
+            </if>
+            <if test="sysUserId != null ">and sys_user_id = #{sysUserId}</if>
+            <if test="education != null  and education != ''">and Education = #{education}</if>
+            <if test="academicTitle != null  and academicTitle != ''">and academic_title = #{academicTitle}</if>
+            <if test="status != null  and status != ''">and status = #{status}</if>
+        </where>
+    </select>
+
+    <select id="selectEduTeacherById" parameterType="Long" resultMap="EduTeacherResult">
+        <include refid="selectEduTeacherVo"/>
+        where teacher_id = #{teacherId}
+    </select>
+
+    <insert id="insertEduTeacher" parameterType="EduTeacher" useGeneratedKeys="true" keyProperty="teacherId">
+        insert into edu_teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="teacherName != null  and teacherName != ''">teacher_name,</if>
+            <if test="sysUserId != null ">sys_user_id,</if>
+            <if test="education != null  and education != ''">Education,</if>
+            <if test="academicTitle != null  and academicTitle != ''">academic_title,</if>
+            <if test="status != null  and status != ''">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="teacherName != null  and teacherName != ''">#{teacherName},</if>
+            <if test="sysUserId != null ">#{sysUserId},</if>
+            <if test="education != null  and education != ''">#{education},</if>
+            <if test="academicTitle != null  and academicTitle != ''">#{academicTitle},</if>
+            <if test="status != null  and status != ''">#{status},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduTeacher" parameterType="EduTeacher">
+        update edu_teacher
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="teacherName != null  and teacherName != ''">teacher_name = #{teacherName},</if>
+            <if test="sysUserId != null ">sys_user_id = #{sysUserId},</if>
+            <if test="education != null  and education != ''">Education = #{education},</if>
+            <if test="academicTitle != null  and academicTitle != ''">academic_title = #{academicTitle},</if>
+            <if test="status != null  and status != ''">status = #{status},</if>
+        </trim>
+        where teacher_id = #{teacherId}
+    </update>
+
+    <delete id="deleteEduTeacherById" parameterType="Long">
+        delete from edu_teacher where teacher_id = #{teacherId}
+    </delete>
+
+    <delete id="deleteEduTeacherByIds" parameterType="String">
+        delete from edu_teacher where teacher_id in
+        <foreach item="teacherId" collection="array" open="(" separator="," close=")">
+            #{teacherId}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduClassCourseMapper">
+
+    <resultMap type="EduClassCourse" id="EduClassCourseResult">
+        <result property="classCourseId" column="class_course_id"/>
+        <result property="classCourseClassId" column="class_course_class_id"/>
+        <result property="classCourseTeacherid" column="class_course_teacherid"/>
+        <result property="classCourseCourseId" column="class_course_course_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduClassCourseVo">
+        select class_course_id, class_course_class_id, class_course_teacherid, class_course_course_id, create_by, create_time, update_by, update_time, del_flag from edu_class_course
+    </sql>
+
+    <select id="selectEduClassCourseList" parameterType="EduClassCourse" resultMap="EduClassCourseResult">
+        <include refid="selectEduClassCourseVo"/>
+        <where>
+            <if test="classCourseClassId != null ">and class_course_class_id = #{classCourseClassId}</if>
+            <if test="classCourseTeacherid != null ">and class_course_teacherid = #{classCourseTeacherid}</if>
+            <if test="classCourseCourseId != null ">and class_course_course_id = #{classCourseCourseId}</if>
+        </where>
+    </select>
+
+    <select id="selectEduClassCourseById" parameterType="Long" resultMap="EduClassCourseResult">
+        <include refid="selectEduClassCourseVo"/>
+        where class_course_id = #{classCourseId}
+    </select>
+
+    <insert id="insertEduClassCourse" parameterType="EduClassCourse" useGeneratedKeys="true"
+            keyProperty="classCourseId">
+        insert into edu_class_course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classCourseClassId != null ">class_course_class_id,</if>
+            <if test="classCourseTeacherid != null ">class_course_teacherid,</if>
+            <if test="classCourseCourseId != null ">class_course_course_id,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classCourseClassId != null ">#{classCourseClassId},</if>
+            <if test="classCourseTeacherid != null ">#{classCourseTeacherid},</if>
+            <if test="classCourseCourseId != null ">#{classCourseCourseId},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduClassCourse" parameterType="EduClassCourse">
+        update edu_class_course
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classCourseClassId != null ">class_course_class_id = #{classCourseClassId},</if>
+            <if test="classCourseTeacherid != null ">class_course_teacherid = #{classCourseTeacherid},</if>
+            <if test="classCourseCourseId != null ">class_course_course_id = #{classCourseCourseId},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+        </trim>
+        where class_course_id = #{classCourseId}
+    </update>
+
+    <delete id="deleteEduClassCourseById" parameterType="Long">
+        delete from edu_class_course where class_course_id = #{classCourseId}
+    </delete>
+
+    <delete id="deleteEduClassCourseByIds" parameterType="String">
+        delete from edu_class_course where class_course_id in
+        <foreach item="classCourseId" collection="array" open="(" separator="," close=")">
+            #{classCourseId}
+        </foreach>
+    </delete>
+
+</mapper>

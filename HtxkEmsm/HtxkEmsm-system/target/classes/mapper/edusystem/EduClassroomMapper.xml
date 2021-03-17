@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduClassroomMapper">
+
+    <resultMap type="EduClassroom" id="EduClassroomResult">
+        <result property="classroomId" column="Classroom_id"/>
+        <result property="classroomAddress" column="Classroom_address"/>
+        <result property="classroomCapacity" column="Classroom_capacity"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduClassroomVo">
+        select Classroom_id, Classroom_address, Classroom_capacity, create_by, create_time, update_by, update_time, del_flag from edu_classroom
+    </sql>
+
+    <select id="selectEduClassroomList" parameterType="EduClassroom" resultMap="EduClassroomResult">
+        <include refid="selectEduClassroomVo"/>
+        <where>
+            <if test="classroomAddress != null  and classroomAddress != ''">and Classroom_address like concat('%',
+                #{classroomAddress}, '%')
+            </if>
+            <if test="classroomCapacity != null ">and Classroom_capacity &gt;= #{classroomCapacity}</if>
+        </where>
+    </select>
+
+    <select id="selectEduClassroomById" parameterType="Long" resultMap="EduClassroomResult">
+        <include refid="selectEduClassroomVo"/>
+        where Classroom_id = #{classroomId}
+    </select>
+
+    <insert id="insertEduClassroom" parameterType="EduClassroom">
+        insert into edu_classroom
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classroomId != null ">Classroom_id,</if>
+            <if test="classroomAddress != null  and classroomAddress != ''">Classroom_address,</if>
+            <if test="classroomCapacity != null ">Classroom_capacity,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classroomId != null ">#{classroomId},</if>
+            <if test="classroomAddress != null  and classroomAddress != ''">#{classroomAddress},</if>
+            <if test="classroomCapacity != null ">#{classroomCapacity},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduClassroom" parameterType="EduClassroom">
+        update edu_classroom
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classroomAddress != null  and classroomAddress != ''">Classroom_address = #{classroomAddress},
+            </if>
+            <if test="classroomCapacity != null ">Classroom_capacity = #{classroomCapacity},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+        </trim>
+        where Classroom_id = #{classroomId}
+    </update>
+
+    <delete id="deleteEduClassroomById" parameterType="Long">
+        delete from edu_classroom where Classroom_id = #{classroomId}
+    </delete>
+
+    <delete id="deleteEduClassroomByIds" parameterType="String">
+        delete from edu_classroom where Classroom_id in
+        <foreach item="classroomId" collection="array" open="(" separator="," close=")">
+            #{classroomId}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('新增班级教师')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-ClassTeacher-add">
+        <div class="form-group" id="class">
+            <label class="col-sm-3 control-label">班级名：</label>
+            <div class="col-sm-8">
+                <select name="classTeacherClassId" class="form-control m-b" required>
+                    <option th:each="eduClass:${eduClassList}" th:value="${eduClass.classId}" th:text="${eduClass.className}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="teacher" >
+            <label class="col-sm-3 control-label">教师名：</label>
+            <div class="col-sm-8">
+                <select name="classTeacherTeacherId" class="form-control m-b" required>
+                    <option th:each="eduTeacher:${eduTeacherList}" th:value="${eduTeacher.teacherId}" th:text="${eduTeacher.teacherName}"></option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/ClassTeacher"
+   /* $("#form-ClassTeacher-add").validate({
+        focusCleanup: true
+    });*/
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-ClassTeacher-add').serialize());
+        }
+    }
+</script>
+</body>
+</html>
