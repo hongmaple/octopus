@@ -59,9 +59,6 @@ public class EduClassTeacherController extends BaseController {
     @ResponseBody
     public TableDataInfo list(EduClassTeacher eduClassTeacher) {
         List<EduClassTeacher> list = eduClassTeacherService.selectEduClassTeacherList(eduClassTeacher);
-        for (EduClassTeacher eduClassTeacher1:list) {
-            System.out.println("哈哈");
-        }
         return getDataTable(list);
     }
     @RequiresPermissions("edusystem:ClassTeacher1:list1")

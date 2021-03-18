@@ -37,12 +37,12 @@ public class EduMajor extends BaseEntity {
     /**
      * 更新者
      */
-    private String updataBy;
+    private String updateBy;
 
     /**
      * 更新时间
      */
-    private Date updataTime;
+    private Date updateTime;
 
     /**
      * 删除标志（0代表存在 2代表删除）
@@ -88,19 +88,19 @@ public class EduMajor extends BaseEntity {
     }
 
     public String getUpdataBy() {
-        return updataBy;
+        return updateBy;
     }
 
     public void setUpdataBy(String updataBy) {
-        this.updataBy = updataBy;
+        this.updateBy = updataBy;
     }
 
     public Date getUpdataTime() {
-        return updataTime;
+        return updateTime;
     }
 
     public void setUpdataTime(Date updataTime) {
-        this.updataTime = updataTime;
+        this.updateTime = updataTime;
     }
 
     public String getDelFlag() {
@@ -117,8 +117,8 @@ public class EduMajor extends BaseEntity {
         sb.append("majorStudiedid=").append(majorStudiedid);
         sb.append(", majorStudiedname='").append(majorStudiedname).append('\'');
         sb.append(", describe='").append(describe).append('\'');
-        sb.append(", updataBy='").append(updataBy).append('\'');
-        sb.append(", updataTime=").append(updataTime);
+        sb.append(", updateBy='").append(updateBy).append('\'');
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", delFlag='").append(delFlag).append('\'');
         sb.append(", eduClasses=").append(eduClasses);
         sb.append('}');

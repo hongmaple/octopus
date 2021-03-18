@@ -10,13 +10,13 @@
         <result property="describe" column="Major_describe"/>
         <result property="createBy" column="create_by"/>
         <result property="createTime" column="create_time"/>
-        <result property="updataBy" column="updata_by"/>
-        <result property="updataTime" column="updata_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
         <result property="delFlag" column="del_flag"/>
     </resultMap>
 
     <sql id="selectEduMajorVo">
-        select Major_studiedId, Major_studiedName, Major_describe, create_by, create_time, updata_by, updata_time, del_flag from edu_major
+        select Major_studiedId, Major_studiedName, Major_describe, create_by, create_time, update_by, update_time, del_flag from edu_major
     </sql>
 
     <select id="selectEduMajorList" parameterType="EduMajor" resultMap="EduMajorResult">
@@ -42,8 +42,8 @@
             <if test="describe != null  and describe != ''">Major_describe,</if>
             <if test="createBy != null  and createBy != ''">create_by,</if>
             <if test="createTime != null ">create_time,</if>
-            <if test="updataBy != null  and updataBy != ''">updata_by,</if>
-            <if test="updataTime != null ">updata_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
             <if test="delFlag != null  and delFlag != ''">del_flag,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -52,8 +52,8 @@
             <if test="describe != null  and describe != ''">#{describe},</if>
             <if test="createBy != null  and createBy != ''">#{createBy},</if>
             <if test="createTime != null ">#{createTime},</if>
-            <if test="updataBy != null  and updataBy != ''">#{updataBy},</if>
-            <if test="updataTime != null ">#{updataTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
             <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
         </trim>
     </insert>
@@ -66,8 +66,8 @@
             <if test="describe != null  and describe != ''">Major_describe = #{describe},</if>
             <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
-            <if test="updataBy != null  and updataBy != ''">updata_by = #{updataBy},</if>
-            <if test="updataTime != null ">updata_time = #{updataTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
             <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
         </trim>
         where Major_studiedId = #{majorStudiedid}
@@ -89,8 +89,8 @@
         <result property="describe" column="Major_describe"/>
         <result property="createBy" column="create_by"/>
         <result property="createTime" column="create_time"/>
-        <result property="updataBy" column="updata_by"/>
-        <result property="updataTime" column="updata_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
         <result property="delFlag" column="del_flag"/>
         <collection property="eduClasses" ofType="com.htxk.edusystem.domain.EduClass">
             <id property="classId" column="class_id"/>

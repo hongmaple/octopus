@@ -7,7 +7,7 @@ ruoyi:
   # 版权年份
   copyrightYear: 2019
   # 实例演示开关
-  demoEnabled: true
+  demoEnabled: false
   # 文件路径 示例（ Windows配置D:/HtxkEmsm/uploadPath，Linux配置 /home/HtxkEmsm/uploadPath）
   profile: D:/HtxkEmsm/uploadPath
   # 获取ip地址开关
@@ -32,6 +32,7 @@ server:
 logging:
   level:
     com.ruoyi: debug
+    com.htxk: debug
     org.springframework: warn
 
 # 用户配置

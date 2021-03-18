@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('修改考试记录')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-records-edit" th:object="${eduTestRecords}">
+        <input name="id" th:field="*{id}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">试卷id：</label>
+            <div class="col-sm-8">
+                <input name="paperId" th:field="*{paperId}" class="form-control"
+                       type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">单选题答题卡：</label>
+            <div class="col-sm-8">
+                <textarea name="singAnswerSheet" class="form-control">[[*{singAnswerSheet}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">多选题答题卡：</label>
+            <div class="col-sm-8">
+                <textarea name="mutiAnswerSheet" class="form-control">[[*{mutiAnswerSheet}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">判断题答题卡数组：</label>
+            <div class="col-sm-8">
+                <textarea name="judAnswerSheet" class="form-control">[[*{judAnswerSheet}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">填空题答题卡数组：</label>
+            <div class="col-sm-8">
+                <input name="fillAnswerSheet" th:field="*{fillAnswerSheet}" class="form-control"
+                       type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">简答题答题卡数组：</label>
+            <div class="col-sm-8">
+                <textarea name="essAnswerSheet" class="form-control">[[*{essAnswerSheet}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">课程id：</label>
+            <div class="col-sm-8">
+                <select name="courseId" class="form-control m-b">
+                    <option value="">所有</option>
+                </select>
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">描述：</label>
+            <div class="col-sm-8">
+                <textarea name="describe" class="form-control">[[*{describe}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">得分：</label>
+            <div class="col-sm-8">
+                <input name="score" th:field="*{score}" class="form-control"
+                       type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">总分：</label>
+            <div class="col-sm-8">
+                <input name="totalPoints" th:field="*{totalPoints}" class="form-control"
+                       type="text">
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/records";
+    $("#form-records-edit").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/edit", $('#form-records-edit').serialize());
+        }
+    }
+</script>
+</body>
+</html>
