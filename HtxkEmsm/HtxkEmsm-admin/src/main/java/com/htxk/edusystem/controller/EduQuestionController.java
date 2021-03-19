@@ -10,6 +10,7 @@ import com.htxk.ruoyi.common.core.page.TableDataInfo;
 import com.htxk.ruoyi.common.enums.BusinessType;
 import com.htxk.ruoyi.common.utils.StringUtils;
 import com.htxk.ruoyi.common.utils.poi.ExcelUtil;
+import com.htxk.ruoyi.framework.util.ShiroUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,6 +87,8 @@ public class EduQuestionController extends BaseController {
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(EduQuestion eduQuestion) {
+        eduQuestion.setCreateBy(ShiroUtils.getLoginName());
+        eduQuestion.setCreateTime(new Date());
         return toAjax(eduQuestionService.insertEduQuestion(eduQuestion));
     }
 
@@ -107,6 +111,8 @@ public class EduQuestionController extends BaseController {
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(EduQuestion eduQuestion) {
+        eduQuestion.setUpdateBy(ShiroUtils.getLoginName());
+        eduQuestion.setUpdateTime(new Date());
         return toAjax(eduQuestionService.updateEduQuestion(eduQuestion));
     }
 

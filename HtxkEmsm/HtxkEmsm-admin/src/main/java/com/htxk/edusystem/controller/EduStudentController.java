@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -169,14 +170,16 @@ public class EduStudentController extends BaseController {
     @Transactional
     public AjaxResult editSave(EduStudent eduStudent) {
         SysUser user = eduStudent.getSysUser();
-        sysUserService.checkUserAllowed(user);//校验用户是否允许操作
-        System.out.println(eduStudent);
+        sysUserService.checkUserAllowed(user);
+        //校验用户是否允许操作
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(sysUserService.checkPhoneUnique(user))) {
             return error("修改用户'" + user.getLoginName() + "'失败，手机号码已存在");
         } else if (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(sysUserService.checkEmailUnique(user))) {
             return error("修改用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
         }
         user.setUpdateBy(ShiroUtils.getLoginName());
+        //设置修改时间
+        user.setUpdateTime(new Date());
         sysUserService.updateUser(user);
         EduClass eduClass = eduClassService.selectEduClassById(eduStudent.getStudentClassID());
         eduStudent.setStudentMajorstudiedid(eduClass.getClassMajor());

@@ -10,12 +10,14 @@ import com.htxk.ruoyi.common.core.page.TableDataInfo;
 import com.htxk.ruoyi.common.enums.BusinessType;
 import com.htxk.ruoyi.common.utils.StringUtils;
 import com.htxk.ruoyi.common.utils.poi.ExcelUtil;
+import com.htxk.ruoyi.framework.util.ShiroUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,6 +81,8 @@ public class EduPaperController extends BaseController {
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(EduPaper eduPaper) {
+        eduPaper.setCreateBy(ShiroUtils.getLoginName());
+        eduPaper.setCreateTime(new Date());
         return toAjax(eduPaperService.insertEduPaper(eduPaper));
     }
 
@@ -100,6 +104,8 @@ public class EduPaperController extends BaseController {
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(EduPaper eduPaper) {
+        eduPaper.setUpdateBy(ShiroUtils.getLoginName());
+        eduPaper.setUpdateTime(new Date());
         return toAjax(eduPaperService.updateEduPaper(eduPaper));
     }
 

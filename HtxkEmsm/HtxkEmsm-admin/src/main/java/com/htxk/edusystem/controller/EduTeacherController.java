@@ -26,6 +26,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -113,8 +114,7 @@ public class EduTeacherController extends BaseController {
     @Log(title = "教师信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    //事务注解
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public AjaxResult addSave(@Validated EduTeacher eduTeacher) {
         SysUser user = eduTeacher.getSysUser();
         if (UserConstants.USER_NAME_NOT_UNIQUE.equals(sysUserService.checkLoginNameUnique(user.getLoginName()))) {
@@ -126,6 +126,8 @@ public class EduTeacherController extends BaseController {
         }
         user.setSalt(ShiroUtils.randomSalt());
         user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+        //设置修改时间
+        user.setCreateTime(new Date());
         user.setCreateBy(ShiroUtils.getLoginName());
         //把账号类型设置为教师类型
         user.setUserType("03");
@@ -154,16 +156,17 @@ public class EduTeacherController extends BaseController {
     @Log(title = "教师信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    //事务注解
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public AjaxResult editSave(EduTeacher eduTeacher) {
         SysUser user = eduTeacher.getSysUser();
-        sysUserService.checkUserAllowed(user);//校验用户是否允许操作
+        //校验用户是否允许操作
+        sysUserService.checkUserAllowed(user);
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(sysUserService.checkPhoneUnique(user))) {
             return error("修改用户'" + user.getLoginName() + "'失败，手机号码已存在");
         } else if (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(sysUserService.checkEmailUnique(user))) {
             return error("修改用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
         }
+        user.setUpdateTime(new Date());
         user.setUpdateBy(ShiroUtils.getLoginName());
         sysUserService.updateUser(user);
         return toAjax(eduTeacherService.updateEduTeacher(eduTeacher));

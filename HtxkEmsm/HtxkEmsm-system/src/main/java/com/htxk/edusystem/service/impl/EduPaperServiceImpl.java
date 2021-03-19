@@ -53,20 +53,18 @@ public class EduPaperServiceImpl implements IEduPaperService {
      */
     @Override
     public int insertEduPaper(EduPaper eduPaper) {
-                                                                                                                                                                                                                                                                    eduPaper.setCreateTime(DateUtils.getNowDate());
-                                                                                        return eduPaperMapper.insertEduPaper(eduPaper);
+          return eduPaperMapper.insertEduPaper(eduPaper);
     }
 
     /**
      * 修改试卷
      *
-     * @param eduPaper 试卷
+     * @param eduPaper 试卷F
      * @return 结果
      */
     @Override
     public int updateEduPaper(EduPaper eduPaper) {
-                                                                                                                                                                                                                                                                                                            eduPaper.setUpdateTime(DateUtils.getNowDate());
-                                                return eduPaperMapper.updateEduPaper(eduPaper);
+        return eduPaperMapper.updateEduPaper(eduPaper);
     }
 
     /**
