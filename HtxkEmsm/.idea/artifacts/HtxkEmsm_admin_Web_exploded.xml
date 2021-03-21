@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="HtxkEmsm-admin:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/HtxkEmsm_admin_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="HtxkEmsm-admin/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HtxkEmsm-admin" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

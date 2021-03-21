@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduQuestionMapper">
+
+    <resultMap type="EduQuestion" id="EduQuestionResult">
+        <result property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="title" column="title"/>
+        <result property="sel" column="sel"/>
+        <result property="score" column="score"/>
+        <result property="answer" column="answer"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduQuestionVo">
+        select id, `type`, title, sel, score, answer, create_by, create_time, update_by, update_time, del_flag from edu_question
+    </sql>
+
+    <select id="selectEduQuestionList" parameterType="EduQuestion" resultMap="EduQuestionResult">
+        <include refid="selectEduQuestionVo"/>
+        <where>
+            <if test="type != null  and type != ''">
+                and `type` = #{type}
+            </if>
+            <if test="title != null  and title != ''">
+                and title = #{title}
+            </if>
+            <if test="sel != null  and sel != ''">
+                and sel = #{sel}
+            </if>
+            <if test="score != null ">
+                and score = #{score}
+            </if>
+            <if test="answer != null  and answer != ''">
+                and answer = #{answer}
+            </if>
+            <if test="createBy != null  and createBy != ''">
+                and create_by like concat('%', #{createBy}, '%')
+            </if>
+            <if test="createTime != null ">
+                and create_time &gt;= #{createTime}
+            </if>
+            <if test="updateBy != null ">
+                and update_by like concat('%', #{updateBy}, '%')
+            </if>
+            <if test="updateTime != null ">
+                and update_time &gt;= #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEduQuestionById" parameterType="Long" resultMap="EduQuestionResult">
+        <include refid="selectEduQuestionVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertEduQuestion" parameterType="EduQuestion" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into edu_question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null  and type != ''">`type`,
+            </if>
+            <if test="title != null  and title != ''">title,
+            </if>
+            <if test="sel != null  and sel != ''">sel,
+            </if>
+            <if test="score != null ">score,
+            </if>
+            <if test="answer != null  and answer != ''">answer,
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by,
+            </if>
+            <if test="createTime != null ">create_time,
+            </if>
+            <if test="updateBy != null ">update_by,
+            </if>
+            <if test="updateTime != null ">update_time,
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null  and type != ''">#{type},
+            </if>
+            <if test="title != null  and title != ''">#{title},
+            </if>
+            <if test="sel != null  and sel != ''">#{sel},
+            </if>
+            <if test="score != null ">#{score},
+            </if>
+            <if test="answer != null  and answer != ''">#{answer},
+            </if>
+            <if test="createBy != null  and createBy != ''">#{createBy},
+            </if>
+            <if test="createTime != null ">#{createTime},
+            </if>
+            <if test="updateBy != null ">#{updateBy},
+            </if>
+            <if test="updateTime != null ">#{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateEduQuestion" parameterType="EduQuestion">
+        update edu_question
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="type != null  and type != ''">`type` = #{type},
+            </if>
+            <if test="title != null  and title != ''">title = #{title},
+            </if>
+            <if test="sel != null  and sel != ''">sel = #{sel},
+            </if>
+            <if test="score != null ">score = #{score},
+            </if>
+            <if test="answer != null  and answer != ''">answer = #{answer},
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">create_time = #{createTime},
+            </if>
+            <if test="updateBy != null ">update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null ">update_time = #{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEduQuestionById" parameterType="Long">
+        delete from edu_question where id = #{id}
+    </delete>
+
+    <delete id="deleteEduQuestionByIds" parameterType="String">
+        delete from edu_question where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

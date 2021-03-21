@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduStudentMapper">
+
+    <resultMap type="EduStudent" id="EduStudentResult">
+        <result property="studentId" column="student_id"/>
+        <result property="studentNo" column="student_no"/>
+        <result property="studentName" column="student_name"/>
+        <result property="sysUserId" column="sys_user_id"/>
+        <result property="studentClassID" column="student_class"/>
+        <result property="status" column="status"/>
+        <result property="studentMajorstudiedid" column="student_Majorstudiedid"/>
+        <result property="majorstudiedName" column="Major_studiedName"/>
+        <result property="className" column="class_name"/>
+    </resultMap>
+
+    <sql id="selectEduStudentVo">
+        select s.student_id, s.student_no, s.student_name, s.sys_user_id, s.student_class, s.status, s.student_Majorstudiedid,c.class_name,m.Major_studiedName from edu_student s LEFT JOIN edu_class c on s.student_class = c.class_id LEFT JOIN edu_major m on s.student_Majorstudiedid = m.Major_studiedId
+    </sql>
+
+    <select id="selectEduStudentList" parameterType="EduStudent" resultMap="EduStudentResult">
+        <include refid="selectEduStudentVo"/>
+        <where>
+            <if test="studentNo != null  and studentNo != ''">
+                and student_no like concat('%',  #{studentNo}, '%')
+            </if>
+            <if test="studentName != null  and studentName != ''">
+                and student_name like concat('%', #{studentName}, '%')
+            </if>
+            <if test="sysUserId != null ">
+                and sys_user_id = #{sysUserId}
+            </if>
+            <if test="studentClassID != null ">
+                and student_class = #{studentClassID}
+            </if>
+            <if test="status != null  and status != ''">
+                and status = #{status}
+            </if>
+            <if test="studentMajorstudiedid != null ">
+                and student_Majorstudiedid = #{studentMajorstudiedid}
+            </if>
+            and c.del_flag=0 and m.del_flag=0
+        </where>
+    </select>
+
+    <select id="selectEduStudentById" parameterType="Long" resultMap="EduStudentResult">
+        <include refid="selectEduStudentVo"/>
+        where s.student_id = #{studentId} and c.del_flag=0 and m.del_flag=0
+    </select>
+
+    <insert id="insertEduStudent" parameterType="EduStudent" useGeneratedKeys="true"
+            keyProperty="studentId">
+        insert into edu_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentNo != null  and studentNo != ''">student_no,
+            </if>
+            <if test="studentName != null  and studentName != ''">student_name,
+            </if>
+            <if test="sysUserId != null ">sys_user_id,
+            </if>
+            <if test="studentClassID != null ">student_class,
+            </if>
+            <if test="status != null  and status != ''">status,
+            </if>
+            <if test="studentMajorstudiedid != null ">student_Majorstudiedid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="studentNo != null  and studentNo != ''">#{studentNo},
+            </if>
+            <if test="studentName != null  and studentName != ''">#{studentName},
+            </if>
+            <if test="sysUserId != null ">#{sysUserId},
+            </if>
+            <if test="studentClassID != null ">#{studentClassID},
+            </if>
+            <if test="status != null  and status != ''">#{status},
+            </if>
+            <if test="studentMajorstudiedid != null ">#{studentMajorstudiedid},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateEduStudent" parameterType="EduStudent">
+        update edu_student
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="studentNo != null  and studentNo != ''">student_no = #{studentNo},
+            </if>
+            <if test="studentName != null  and studentName != ''">student_name = #{studentName},
+            </if>
+            <if test="sysUserId != null ">sys_user_id = #{sysUserId},
+            </if>
+            <if test="studentClassID != null ">student_class = #{studentClassID},
+            </if>
+            <if test="status != null  and status != ''">status = #{status},
+            </if>
+            <if test="studentMajorstudiedid != null ">student_Majorstudiedid = #{studentMajorstudiedid},
+            </if>
+        </trim>
+        where student_id = #{studentId}
+    </update>
+
+    <delete id="deleteEduStudentById" parameterType="Long">
+        delete from edu_student where student_id = #{studentId}
+    </delete>
+
+    <delete id="deleteEduStudentByIds" parameterType="String">
+        delete from edu_student where student_id in
+        <foreach item="studentId" collection="array" open="(" separator="," close=")">
+            #{studentId}
+        </foreach>
+    </delete>
+
+</mapper>

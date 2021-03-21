@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('新增学生信息')"/>
+    <th:block th:include="include :: select2-css"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-student-add">
+        <h4 class="form-header h4">基本信息</h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">学生姓名：</label>
+                    <div class="col-sm-8">
+                        <input name="studentName" placeholder="请输入学生姓名" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">所属班级：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control select2-multiple" id="studentClass" required>
+                            <optgroup th:each="Major:${classTrees}"
+                                      th:label="${Major.majorStudiedname}">
+                                <option th:each="eduClass:${Major.eduClasses}"
+                                         th:value="${eduClass.classId}"
+                                         th:text="${eduClass.className}">
+                                </option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">状态：</label>
+                    <div class="col-sm-8">
+                        <select name="status" class="form-control m-b" th:with="type=${@dict.getType('student_status')}"
+                                required>
+                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+                                    th:value="${dict.dictValue}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>用户昵称：</label>
+                    <div class="col-sm-8">
+                        <input name="sysUser.userName" placeholder="请输入用户昵称" class="form-control" type="text"
+                               maxlength="30"
+                               required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>邮箱：</label>
+                    <div class="col-sm-8">
+                        <input id="email" name="sysUser.email" class="form-control email" type="text" maxlength="50"
+                               placeholder="请输入邮箱" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>手机号码：</label>
+                    <div class="col-sm-8">
+                        <input id="phonenumber" name="sysUser.phonenumber" placeholder="请输入手机号码" class="form-control"
+                               type="text" maxlength="11" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户性别：</label>
+                    <div class="col-sm-8">
+                        <select name="sysUser.sex" class="form-control m-b"
+                                th:with="type=${@dict.getType('sys_user_sex')}">
+                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+                                    th:value="${dict.dictValue}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户状态：</label>
+                    <div class="col-sm-8">
+                        <label class="toggle-switch switch-solid">
+                            <input type="checkbox" id="sysUser.status" checked>
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">角色：</label>
+                    <div class="col-xs-10">
+                        <label th:each="role:${roles}" class="check-box">
+                            <input name="role" type="checkbox" th:value="${role.roleId}"
+                                   th:text="${role.roleName}"
+                                   th:disabled="${role.status == '1'}">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="form-header h4">其他信息</h4>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">备注：</label>
+                    <div class="col-xs-10">
+                        <textarea name="sysUser.remark" maxlength="500" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-sm-offset-5 col-sm-10">
+        <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存
+        </button>&nbsp;
+        <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭
+        </button>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: select2-js"/>
+<script type="text/javascript">
+    var studentprefix = ctx + "edusystem/student"
+    var prefix = ctx + "system/user";
+
+    $("#form-student-add").validate({
+        focusCleanup: true,
+        onkeyup: false,
+        rules: {
+            "studentName": {
+                isName: true
+            },
+            "sysUser.email": {
+                email: true,
+                remote: {
+                    url: prefix + "/checkEmailUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        "email": function () {
+                            return $.common.trim($("#email").val());
+                        }
+                    },
+                    dataFilter: function (data, type) {
+                        return $.validate.unique(data);
+                    }
+                }
+            },
+            "sysUser.phonenumber": {
+                isPhone: true,
+                remote: {
+                    url: prefix + "/checkPhoneUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        "phonenumber": function () {
+                            return $.common.trim($("#phonenumber").val());
+                        }
+                    },
+                    dataFilter: function (data, type) {
+                        return $.validate.unique(data);
+                    }
+                }
+            },
+        },
+        messages: {
+            "sysUser.email": {
+                remote: "Email已经存在"
+            },
+            "sysUser.phonenumber": {
+                remote: "手机号码已经存在"
+            }
+        },
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            var data = $('#form-student-add').serializeArray();
+            var status = $("input[id='sysUser.status']").is(':checked') == true ? 0 : 1;
+            var roleIds = $.form.selectCheckeds("role");
+            var classId = $.form.selectSelects("studentClass");
+            /*data.push({"name": "sysUser.password", "value": $("#phonenumber").val().substring(5,11)});*/
+            data.push({"name": "studentClassID", "value": classId});
+            data.push({"name": "sysUser.status", "value": status});
+            data.push({"name": "sysUser.roleIds", "value": roleIds});
+            $.operate.save(studentprefix + "/add", data);
+        }
+    }
+</script>
+</body>
+</html>

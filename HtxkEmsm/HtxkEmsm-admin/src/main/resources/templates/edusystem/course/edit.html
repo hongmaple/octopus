@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('修改课程')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-course-edit" th:object="${eduCourse}">
+        <input name="courseId" th:field="*{courseId}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">课程名：</label>
+            <div class="col-sm-8">
+                <input name="courseName" th:field="*{courseName}" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">课程类型ID：</label>
+            <div class="col-sm-8">
+                <select id="courseTypeid" name="courseTypeid" class="form-control m-b" required
+                        th:with="type=${@CourseType.selectEduCourseTypeList(null)}">
+                    <option value="">所有</option>
+                    <option th:each="CourseType : ${type}" th:text="${CourseType.getCourseTypeName()}"
+                            th:value="${CourseType.getCourseTypeId()}"></option>
+                </select>
+                </li>
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/course";
+    $("#form-course-edit").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/edit", $('#form-course-edit').serialize());
+        }
+    }
+</script>
+</body>
+</html>

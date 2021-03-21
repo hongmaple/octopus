@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('新增教室')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-classroom-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">教室地址：</label>
+            <div class="col-sm-8">
+                <input name="classroomAddress" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">教室容量：</label>
+            <div class="col-sm-8">
+                <input name="Classroom_capacity" class="form-control" type="text" required>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/classroom"
+    $("#form-classroom-add").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-classroom-add').serialize());
+        }
+    }
+</script>
+</body>
+</html>

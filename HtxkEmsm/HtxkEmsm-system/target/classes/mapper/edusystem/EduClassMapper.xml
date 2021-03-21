@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduClassMapper">
+
+    <resultMap type="EduClass" id="EduClassResult">
+        <result property="classId" column="class_id"/>
+        <result property="className" column="class_name"/>
+        <result property="classDate" column="class_Date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="classMajor" column="class_Major"/>
+    </resultMap>
+
+    <resultMap type="EduClass" id="EduClassResult2">
+        <result property="classId" column="class_id"/>
+        <result property="className" column="class_name"/>
+        <result property="classDate" column="class_Date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="classMajor" column="class_Major"/>
+        <association property="eduMajor" column="class_Major" resultMap="eduMajorResult"/>
+    </resultMap>
+
+    <resultMap id="eduMajorResult" type="EduMajor">
+        <result property="majorStudiedname" column="Major_studiedName"/>
+    </resultMap>
+    
+    <sql id="selectEduClassVo">
+        select class_id, class_name, class_Date, create_by, create_time, update_by, update_time, del_flag, class_Major from edu_class
+    </sql>
+    <sql id="selectEduClass_Major">
+        select c.*,m.Major_studiedName from edu_class c
+        left join edu_major m
+        on c.class_Major = m.Major_studiedId
+    </sql>
+    <select id="selectEduClassList" parameterType="EduClass" resultMap="EduClassResult2">
+        <include refid="selectEduClass_Major"/>
+        <where>
+            c.del_flag = 0
+            <if test="className != null  and className != ''">and class_name like concat('%', #{className}, '%')</if>
+            <if test="classDate != null ">and class_Date = #{classDate}</if>
+            <if test="classMajor != null ">and class_Major = #{classMajor}</if>
+        </where>
+    </select>
+
+    <select id="selectEduClassById" parameterType="Long" resultMap="EduClassResult">
+        <include refid="selectEduClassVo"/>
+        where class_id = #{classId} and del_flag = 0
+    </select>
+
+    <insert id="insertEduClass" parameterType="EduClass" useGeneratedKeys="true" keyProperty="classId">
+        insert into edu_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="className != null  and className != ''">class_name,</if>
+            <if test="classDate != null ">class_Date,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+            <if test="classMajor != null ">class_Major,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="className != null  and className != ''">#{className},</if>
+            <if test="classDate != null ">#{classDate},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+            <if test="classMajor != null ">#{classMajor},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduClass" parameterType="EduClass">
+        update edu_class
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="className != null  and className != ''">class_name = #{className},</if>
+            <if test="classDate != null ">class_Date = #{classDate},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+            <if test="classMajor != null ">class_Major = #{classMajor},</if>
+        </trim>
+        where class_id = #{classId}
+    </update>
+
+    <delete id="deleteEduClassById" parameterType="Long">
+        update edu_class set del_flag = 2 where class_id = #{classId}
+    </delete>
+
+    <delete id="deleteEduClassByIds" parameterType="String">
+        update edu_class set del_flag = 2 where class_id in
+        <foreach item="classId" collection="array" open="(" separator="," close=")">
+            #{classId}
+        </foreach>
+    </delete>
+
+</mapper>

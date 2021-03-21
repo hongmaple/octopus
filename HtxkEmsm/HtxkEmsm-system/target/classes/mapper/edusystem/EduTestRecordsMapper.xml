@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduTestRecordsMapper">
+
+    <resultMap type="EduTestRecords" id="EduTestRecordsResult">
+        <result property="id" column="id"/>
+        <result property="paperId" column="paper_id"/>
+        <result property="singAnswerSheet" column="sing_answer_sheet"/>
+        <result property="mutiAnswerSheet" column="muti_answer_sheet"/>
+        <result property="judAnswerSheet" column="jud_answer_sheet"/>
+        <result property="fillAnswerSheet" column="fill_answer_sheet"/>
+        <result property="essAnswerSheet" column="ess_answer_sheet"/>
+        <result property="courseId" column="course_id"/>
+        <result property="describe" column="describe"/>
+        <result property="score" column="score"/>
+        <result property="totalPoints" column="total_points"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduTestRecordsVo">
+        select id, paper_id, sing_answer_sheet, muti_answer_sheet, jud_answer_sheet, fill_answer_sheet, ess_answer_sheet, course_id, `describe`, score, total_points, create_by, create_time, update_by, update_time, del_flag from edu_test_records
+    </sql>
+
+    <select id="selectEduTestRecordsList" parameterType="EduTestRecords" resultMap="EduTestRecordsResult">
+        <include refid="selectEduTestRecordsVo"/>
+        <where>
+            <if test="paperId != null ">
+                and paper_id = #{paperId}
+            </if>
+            <if test="singAnswerSheet != null  and singAnswerSheet != ''">
+                and sing_answer_sheet = #{singAnswerSheet}
+            </if>
+            <if test="mutiAnswerSheet != null  and mutiAnswerSheet != ''">
+                and muti_answer_sheet = #{mutiAnswerSheet}
+            </if>
+            <if test="judAnswerSheet != null  and judAnswerSheet != ''">
+                and jud_answer_sheet = #{judAnswerSheet}
+            </if>
+            <if test="fillAnswerSheet != null  and fillAnswerSheet != ''">
+                and fill_answer_sheet = #{fillAnswerSheet}
+            </if>
+            <if test="essAnswerSheet != null  and essAnswerSheet != ''">
+                and ess_answer_sheet = #{essAnswerSheet}
+            </if>
+            <if test="courseId != null ">
+                and course_id = #{courseId}
+            </if>
+            <if test="describe != null  and describe != ''">
+                and `describe` = #{describe}
+            </if>
+            <if test="score != null ">
+                and score = #{score}
+            </if>
+            <if test="totalPoints != null ">
+                and total_points = #{totalPoints}
+            </if>
+            <if test="createBy != null  and createBy != ''">
+                and create_by like concat('%', #{createBy}, '%')
+            </if>
+            <if test="createTime != null ">
+                and create_time &gt;= #{createTime}
+            </if>
+            <if test="updateBy != null  and updateBy != ''">
+                and update_by like concat('%', #{updateBy}, '%')
+            </if>
+            <if test="updateTime != null ">
+                and update_time &gt;= #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEduTestRecordsById" parameterType="Long" resultMap="EduTestRecordsResult">
+        <include refid="selectEduTestRecordsVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertEduTestRecords" parameterType="EduTestRecords" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into edu_test_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="paperId != null ">paper_id,
+            </if>
+            <if test="singAnswerSheet != null  and singAnswerSheet != ''">sing_answer_sheet,
+            </if>
+            <if test="mutiAnswerSheet != null  and mutiAnswerSheet != ''">muti_answer_sheet,
+            </if>
+            <if test="judAnswerSheet != null  and judAnswerSheet != ''">jud_answer_sheet,
+            </if>
+            <if test="fillAnswerSheet != null  and fillAnswerSheet != ''">fill_answer_sheet,
+            </if>
+            <if test="essAnswerSheet != null  and essAnswerSheet != ''">ess_answer_sheet,
+            </if>
+            <if test="courseId != null ">course_id,
+            </if>
+            <if test="describe != null  and describe != ''">describe,
+            </if>
+            <if test="score != null ">score,
+            </if>
+            <if test="totalPoints != null ">total_points,
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by,
+            </if>
+            <if test="createTime != null ">create_time,
+            </if>
+            <if test="updateBy != null  and updateBy != ''">update_by,
+            </if>
+            <if test="updateTime != null ">update_time,
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="paperId != null ">#{paperId},
+            </if>
+            <if test="singAnswerSheet != null  and singAnswerSheet != ''">#{singAnswerSheet},
+            </if>
+            <if test="mutiAnswerSheet != null  and mutiAnswerSheet != ''">#{mutiAnswerSheet},
+            </if>
+            <if test="judAnswerSheet != null  and judAnswerSheet != ''">#{judAnswerSheet},
+            </if>
+            <if test="fillAnswerSheet != null  and fillAnswerSheet != ''">#{fillAnswerSheet},
+            </if>
+            <if test="essAnswerSheet != null  and essAnswerSheet != ''">#{essAnswerSheet},
+            </if>
+            <if test="courseId != null ">#{courseId},
+            </if>
+            <if test="describe != null  and describe != ''">#{describe},
+            </if>
+            <if test="score != null ">#{score},
+            </if>
+            <if test="totalPoints != null ">#{totalPoints},
+            </if>
+            <if test="createBy != null  and createBy != ''">#{createBy},
+            </if>
+            <if test="createTime != null ">#{createTime},
+            </if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},
+            </if>
+            <if test="updateTime != null ">#{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateEduTestRecords" parameterType="EduTestRecords">
+        update edu_test_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="paperId != null ">paper_id = #{paperId},
+            </if>
+            <if test="singAnswerSheet != null  and singAnswerSheet != ''">sing_answer_sheet = #{singAnswerSheet},
+            </if>
+            <if test="mutiAnswerSheet != null  and mutiAnswerSheet != ''">muti_answer_sheet = #{mutiAnswerSheet},
+            </if>
+            <if test="judAnswerSheet != null  and judAnswerSheet != ''">jud_answer_sheet = #{judAnswerSheet},
+            </if>
+            <if test="fillAnswerSheet != null  and fillAnswerSheet != ''">fill_answer_sheet = #{fillAnswerSheet},
+            </if>
+            <if test="essAnswerSheet != null  and essAnswerSheet != ''">ess_answer_sheet = #{essAnswerSheet},
+            </if>
+            <if test="courseId != null ">course_id = #{courseId},
+            </if>
+            <if test="describe != null  and describe != ''">
+                `describe` = #{describe},
+            </if>
+            <if test="score != null ">score = #{score},
+            </if>
+            <if test="totalPoints != null ">total_points = #{totalPoints},
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">create_time = #{createTime},
+            </if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null ">update_time = #{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEduTestRecordsById" parameterType="Long">
+        delete from edu_test_records where id = #{id}
+    </delete>
+
+    <delete id="deleteEduTestRecordsByIds" parameterType="String">
+        delete from edu_test_records where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

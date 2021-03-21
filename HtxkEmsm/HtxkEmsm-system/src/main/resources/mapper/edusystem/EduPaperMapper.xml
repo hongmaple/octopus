@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduPaperMapper">
+
+    <resultMap type="EduPaper" id="EduPaperResult">
+        <result property="id" column="id"/>
+        <result property="qtyName" column="qty_name"/>
+        <result property="qtyTime" column="qty_time"/>
+        <result property="qtySing" column="qty_sing"/>
+        <result property="qtyMuti" column="qty_muti"/>
+        <result property="qtyJud" column="qty_jud"/>
+        <result property="qtyFill" column="qty_fill"/>
+        <result property="qtyEss" column="qty_ess"/>
+        <result property="courseId" column="course_id"/>
+        <result property="score" column="score"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduPaperVo">
+        select id, qty_name, qty_time, qty_sing, qty_muti, qty_jud, qty_fill, qty_ess, course_id, score, create_by, create_time, update_by, update_time, del_flag from edu_paper
+    </sql>
+
+    <select id="selectEduPaperList" parameterType="EduPaper" resultMap="EduPaperResult">
+        <include refid="selectEduPaperVo"/>
+        <where>
+            <if test="qtyName != null  and qtyName != ''">
+                and qty_name like concat('%', #{qtyName}, '%')
+            </if>
+            <if test="qtyTime != null ">
+                and qty_time = #{qtyTime}
+            </if>
+            <if test="courseId != null ">
+                and course_id = #{courseId}
+            </if>
+            <if test="score != null ">
+                and score &gt;= #{score}
+            </if>
+            <if test="createBy != null  and createBy != ''">
+                and create_by like concat('%', #{createBy}, '%')
+            </if>
+            <if test="createTime != null ">
+                and create_time &gt;= #{createTime}
+            </if>
+            <if test="updateBy != null  and updateBy != ''">
+                and update_by like concat('%', #{updateBy}, '%')
+            </if>
+            <if test="updateTime != null ">
+                and update_time &gt;= #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEduPaperById" parameterType="Long" resultMap="EduPaperResult">
+        <include refid="selectEduPaperVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertEduPaper" parameterType="EduPaper" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into edu_paper
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="qtyName != null  and qtyName != ''">qty_name,
+            </if>
+            <if test="qtyTime != null ">qty_time,
+            </if>
+            <if test="qtySing != null  and qtySing != ''">qty_sing,
+            </if>
+            <if test="qtyMuti != null  and qtyMuti != ''">qty_muti,
+            </if>
+            <if test="qtyJud != null  and qtyJud != ''">qty_jud,
+            </if>
+            <if test="qtyFill != null  and qtyFill != ''">qty_fill,
+            </if>
+            <if test="qtyEss != null  and qtyEss != ''">qty_ess,
+            </if>
+            <if test="courseId != null ">course_id,
+            </if>
+            <if test="score != null ">score,
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by,
+            </if>
+            <if test="createTime != null ">create_time,
+            </if>
+            <if test="updateBy != null  and updateBy != ''">update_by,
+            </if>
+            <if test="updateTime != null ">update_time,
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="qtyName != null  and qtyName != ''">#{qtyName},
+            </if>
+            <if test="qtyTime != null ">#{qtyTime},
+            </if>
+            <if test="qtySing != null  and qtySing != ''">#{qtySing},
+            </if>
+            <if test="qtyMuti != null  and qtyMuti != ''">#{qtyMuti},
+            </if>
+            <if test="qtyJud != null  and qtyJud != ''">#{qtyJud},
+            </if>
+            <if test="qtyFill != null  and qtyFill != ''">#{qtyFill},
+            </if>
+            <if test="qtyEss != null  and qtyEss != ''">#{qtyEss},
+            </if>
+            <if test="courseId != null ">#{courseId},
+            </if>
+            <if test="score != null ">#{score},
+            </if>
+            <if test="createBy != null  and createBy != ''">#{createBy},
+            </if>
+            <if test="createTime != null ">#{createTime},
+            </if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},
+            </if>
+            <if test="updateTime != null ">#{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateEduPaper" parameterType="EduPaper">
+        update edu_paper
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="qtyName != null  and qtyName != ''">qty_name = #{qtyName},
+            </if>
+            <if test="qtyTime != null ">qty_time = #{qtyTime},
+            </if>
+            <if test="qtySing != null  and qtySing != ''">qty_sing = #{qtySing},
+            </if>
+            <if test="qtyMuti != null  and qtyMuti != ''">qty_muti = #{qtyMuti},
+            </if>
+            <if test="qtyJud != null  and qtyJud != ''">qty_jud = #{qtyJud},
+            </if>
+            <if test="qtyFill != null  and qtyFill != ''">qty_fill = #{qtyFill},
+            </if>
+            <if test="qtyEss != null  and qtyEss != ''">qty_ess = #{qtyEss},
+            </if>
+            <if test="courseId != null ">course_id = #{courseId},
+            </if>
+            <if test="score != null ">score = #{score},
+            </if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},
+            </if>
+            <if test="createTime != null ">create_time = #{createTime},
+            </if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},
+            </if>
+            <if test="updateTime != null ">update_time = #{updateTime},
+            </if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEduPaperById" parameterType="Long">
+        delete from edu_paper where id = #{id}
+    </delete>
+
+    <delete id="deleteEduPaperByIds" parameterType="String">
+        delete from edu_paper where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

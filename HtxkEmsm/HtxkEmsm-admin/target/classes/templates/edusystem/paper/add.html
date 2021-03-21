@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('新增试卷')"/>
+    <th:block th:include="include :: jquery-steps-css"/>
+    <style>
+        .content {
+            height: 250px;
+            background: #ffffff;
+            display: block;
+            margin: 5px 5px 10px 5px;
+            min-height: 250px;
+            max-height: 250px;
+            position: relative;
+            width: auto;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-paper-add">
+        <h1>基本信息</h1>
+        <section>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">试卷名称：</label>
+                        <div class="col-sm-8">
+                            <input id="qtyName" name="qtyName" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">考试时长：</label>
+                        <div class="col-sm-8">
+                            <input id="qtyTime" name="qtyTime" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">课程：</label>
+                        <div class="col-sm-8">
+                            <select id="courseId" name="courseId" class="form-control m-b" required
+                                    th:with="type=${@Course.selectEduCourseList(null)}">
+                                <option value="">所有</option>
+                                <option th:each="Course : ${type}" th:text="${Course.getCourseName()}"
+                                        th:value="${Course.getCourseId()}"></option>
+                            </select>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h1>添加单选题</h1>
+        <section>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">单选题：</label>
+                <div class="col-sm-8">
+                    <textarea id="qtySing" name="qtySing" class="form-control" disabled="disabled" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">总分：</label>
+                <div class="col-sm-8">
+                    <input id="SingScore"  disabled="disabled"  class="form-control" type="text">
+                </div>
+            </div>
+        </section>
+
+        <h1>添加多选题</h1>
+        <section>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">多选题：</label>
+                <div class="col-sm-8">
+                    <textarea id="qtyMuti" name="qtyMuti" class="form-control" disabled="disabled" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">总分：</label>
+                <div class="col-sm-8">
+                    <input id="MutiSocre"  disabled="disabled"  class="form-control" type="text">
+                </div>
+            </div>
+        </section>
+
+        <h1>添加判断题</h1>
+        <section>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">填空题：</label>
+                <div class="col-sm-8">
+                    <textarea id="qtyJud" name="qtyJud" class="form-control" disabled="disabled" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">总分：</label>
+                <div class="col-sm-8">
+                    <input id="JudSocre"  disabled="disabled"  class="form-control" type="text">
+                </div>
+            </div>
+        </section>
+
+        <h1>添加填空题</h1>
+        <section>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">填空题：</label>
+                <div class="col-sm-8">
+                    <textarea id="qtyFill" name="qtyFill" class="form-control" disabled="disabled" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">总分：</label>
+                <div class="col-sm-8">
+                    <input id="FillSocre"  disabled="disabled"  class="form-control" type="text">
+                </div>
+            </div>
+        </section>
+
+        <!--        <h1>添加简答题</h1>-->
+        <!--        <section>-->
+        <!--            <div class="col-sm-8">-->
+        <!--                <textarea name="qtyEss" class="form-control"></textarea>-->
+        <!--            </div>-->
+        <!--        </section>-->
+        <div class="col-sm-8" style="display: none">
+            <input name="score" id="totalPoints"   class="form-control" type="text">
+        </div>
+    </form>
+    <div id="questionList" class="container-div" style="display:none;">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <p>题目分值：</p>
+                                <input type="text" name="score"/>
+                            </li>
+                            <li>
+                                <p>创建者：</p>
+                                <input type="text" name="createBy"/>
+                            </li>
+                            <li class="select-time">
+                            <p>创建时间：</p>
+                            <input type="text" class="time-input" id="CreateStartTime" placeholder="开始时间"
+                            name="params[beginCreateTime]"/>
+                            <span>-</span>
+                            <input type="text" class="time-input" id="CreateEndTime" placeholder="结束时间"
+                            name="params[endCreateTime]"/>
+                            </li>
+                            <li>
+                                <p>更新者：</p>
+                                <input type="text" name="updateBy"/>
+                            </li>
+                            <li class="select-time">
+                            <p>更新时间：</p>
+                            <input type="text" class="time-input" id="updateStartTime" placeholder="开始时间"
+                            name="params[beginUpdateTime]"/>
+                            <span>-</span>
+                            <input type="text" class="time-input" id="updateEndTime" placeholder="结束时间"
+                            name="params[endUpdateTime]"/>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                        class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                        class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="edusystem:question:add">
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()"
+                   shiro:hasPermission="edusystem:question:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()"
+                   shiro:hasPermission="edusystem:question:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()"
+                   shiro:hasPermission="edusystem:question:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+                <a class="btn btn-success" onclick="addQuestionsPaperAll()" shiro:hasPermission="edusystem:question:add">
+                    <i class="fa fa-plus"></i> 添加到试卷中
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: jquery-steps-js"/>
+<script th:inline="javascript">
+    var prefix = ctx + "edusystem/paper"
+    var editFlag = [[${@permission.hasPermi('edusystem:question:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('edusystem:question:remove')}]];
+    var questionPrefix = ctx + "edusystem/question";
+    var currentNum=0;
+    var singScore=0;
+    var mutiScore=0;
+    var judScore=0;
+    var fillScore=0;
+
+    $("#form-paper-add").validate({
+        focusCleanup: true
+    });
+    function mySubmit(url, type, dataType, data, callback) {
+        var config = {
+            url: url,
+            type: type,
+            dataType: dataType,
+            data: data,
+            beforeSend: function () {
+                //$.modal.loading("正在处理中，请稍后...");
+            },
+            success: function (result) {
+                if (typeof callback == "function") {
+                    callback(result);
+                }
+            }
+        };
+        $.ajax(config)
+    }
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            var data = $('#form-paper-add').serialize();
+            data+="&qtySing="
+                +$("#qtySing").val()
+                +"&qtyMuti="
+                +$("#qtyMuti").val()
+                +"&qtyJud="
+                + $("#qtyJud").val()
+                +"&qtyFill="+$("#qtyFill").val()
+                +"&score="+$("#totalPoints").val();
+            $.operate.save(prefix + "/add", data);
+        }
+    }
+    
+    function addQuestionsPaperAll () {
+        table.set();
+        var rows = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
+        if (rows.length == 0) {
+            $.modal.alertWarning("请至少选择一条记录");
+            return;
+        }
+        $.modal.confirm("确认要添加选中的" + rows.length + "条数据吗?", function () {
+            var data = rows.join();
+            switch (currentNum) {
+                case 1:
+                    // 添加单选题qtySing
+                    $("#qtySing").val(data);
+                    tonji();
+                    return;
+                case 2:
+                    // 添加多选题qtyJud
+                    $("#qtyMuti").val(data);
+                    tonji();
+                    return;
+                case 3:
+                    // 添加判断题qtyJud
+                    $("#qtyJud").val(data);
+                    tonji();
+                    return;
+                case 4:
+                    // 添加填空题qtyJud
+                    $("#qtyFill").val(data);
+                    tonji();
+                    return;
+            }
+        });
+    }
+    function tonji() {
+        singScore = 0;
+        mutiScore = 0;
+        judScore=0;
+        fillScore=0;
+        let qtySing = $("#qtySing").val();
+        let singIds=  null;
+        if(qtySing) {
+            singIds = qtySing.split(",");
+        }
+        let qtyMuti= $("#qtyMuti").val();
+        let mutiIds= null
+        if(qtyMuti) {
+            qtyMuti = qtyMuti.split(",");
+        }
+        let qtyJud = $("#qtyJud").val();
+        let judIds= null;
+        if(qtyJud) {
+            judIds=qtyJud.split(",")
+        }
+        let qtyFill = $("#qtyFill").val();
+        let fillIds=null;
+        if (qtyFill)  {
+            fillIds = qtyFill.split(",");
+        }
+
+        if (singIds) {
+            singIds.forEach(id=>{
+                mySubmit(questionPrefix+"/"+id,"get", "json", "",(res)=>{
+
+                    singScore+=res.score;
+                    var totalPoints=singScore+mutiScore+judScore+fillScore;
+                    $("#SingScore").val(totalPoints);
+                    $("#MutiSocre").val(totalPoints);
+                    $("#JudSocre").val(totalPoints);
+                    $("#FillSocre").val(totalPoints);
+                    $("#totalPoints").val(totalPoints);
+                });
+            });
+        }
+
+        if (mutiIds) {
+            console.log(singIds);
+            mutiIds.forEach(id=>{
+                mySubmit(questionPrefix+"/"+id,"get", "json", "",(res)=>{
+                    mutiScore+=res.score;
+                    var totalPoints=singScore+mutiScore+judScore+fillScore;
+                    $("#SingSocre").val(totalPoints);
+                    $("#MutiSocre").val(totalPoints);
+                    $("#JudSocre").val(totalPoints);
+                    $("#FillSocre").val(totalPoints);
+                    $("#totalPoints").val(totalPoints);
+                });
+            });
+        }
+
+        if (judIds) {
+            judIds.forEach(id=>{
+                mySubmit(questionPrefix+"/"+id,"get", "json", "",(res)=>{
+                    judScore+=res.score;
+                    var totalPoints=singScore+mutiScore+judScore+fillScore;
+                    $("#SingScore").val(singScore+mutiScore+judScore+fillScore);
+                    $("#MutiSocre").val(singScore+mutiScore+judScore+fillScore);
+                    $("#JudSocre").val(singScore+mutiScore+judScore+fillScore);
+                    $("#FillSocre").val(singScore+mutiScore+judScore+fillScore);
+                    $("#totalPoints").val(singScore+mutiScore+judScore+fillScore);
+                });
+            });
+        }
+
+        if (fillIds) {
+            fillIds.forEach(id=>{
+                mySubmit(questionPrefix+"/"+id,"get", "json", "",(res)=>{
+                    console.log(res);
+                    if(typeof(res)!="undefined") {
+                        fillScore+=res.score;
+                        var totalPoints=singScore+mutiScore+judScore+fillScore;
+                        $("#SingScore").val(totalPoints);
+                        $("#MutiSocre").val(totalPoints);
+                        $("#JudSocre").val(totalPoints);
+                        $("#FillSocre").val(totalPoints);
+                        $("#totalPoints").val(totalPoints);
+                    }
+                });
+            });
+        }
+    }
+    var options = {
+        url: questionPrefix + "/list",
+        createUrl: questionPrefix + "/add",
+        updateUrl: questionPrefix + "/edit/{id}",
+        removeUrl: questionPrefix + "/remove",
+        exportUrl: questionPrefix + "/export",
+        modalName: "题库",
+        columns: [{
+            checkbox: true
+        },
+            {
+                field: 'id',
+                title: '题目序号',
+                visible: false
+            },
+            {
+                field: 'title',
+                title: '题目标题'
+            },
+            {
+                field: 'sel',
+                title: '题目选项'
+            },
+            {
+                field: 'score',
+                title: '题目分值'
+            },
+            {
+                field: 'answer',
+                title: '题目答案/关键词'
+            },
+            {
+                field: 'createBy',
+                title: '创建者'
+            },
+            {
+                field: 'createTime',
+                title: '创建时间'
+            },
+            {
+                field: 'updateBy',
+                title: '更新者'
+            },
+            {
+                field: 'updateTime',
+                title: '更新时间'
+            },
+            {
+                title: '操作',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    var actions = [];
+                    actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                    actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                    return actions.join('');
+                }
+            }]
+    };
+    $(function () {
+        $('#questionList').hide();
+        $.table.init(options);
+    });
+
+    // Initialize wizard
+    var wizard = $("#form-paper-add").steps({
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true,
+        onStepChanging: function (event, currentIndex, newIndex) {/*步骤更改之前进行验证，默认验证结果是true*/
+            console.log(newIndex)
+            switch (newIndex) {
+                case 1:
+                    if ($("#form-paper-add").validate().element($("#qtyName")) && $("#form-paper-add").validate().element($("#qtyTime")) && $("#form-paper-add").validate().element($("#courseId"))) {
+                        return true;
+                    }
+                    return false;
+                case 2:
+                    // 添加单选题
+                    return $("#form-paper-add").validate().element($("#qtySing"));
+                case 3:
+                    // 添加多选题
+                    return $("#form-paper-add").validate().element($("#qtyMuti"));
+                case 4:
+                    // 添加判断题
+                    return $("#form-paper-add").validate().element($("#qtyJud"));
+                case 5:
+                    // 添加填空题
+                    return $("#form-paper-add").validate().element($("#qtyFill"));
+            }
+            return true;
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {/*步骤后变更后  触发的函数   */
+            console.log(currentIndex);
+            console.log(priorIndex);
+            currentNum = currentIndex;
+            switch (currentIndex) {
+                case 0:
+                    $('#questionList').hide();
+                    return true;
+                case 1:
+                    // 添加单选题
+                    var queryParams = {
+                        type: 0,
+                        score: null,
+                        createBy: null,
+                        updateBy: null,
+                        pageSize: 10,
+                        pageNum: 1,
+                        orderByColumn: null,
+                        isAsc: "asc"
+                    };
+                    $.table.search("formId","bootstrap-table",queryParams);
+                    $('#questionList').show();
+                    return true;
+                case 2:
+                    // 添加多选题
+                    var queryParams = {
+                        type: 1,
+                        score: null,
+                        createBy: null,
+                        updateBy: null,
+                        pageSize: 10,
+                        pageNum: 1,
+                        orderByColumn: null,
+                        isAsc: "asc"
+                    };
+                    $.table.search("formId","bootstrap-table",queryParams);
+                    $('#questionList').show();
+                    return true;
+                case 3:
+                    // 添加判断题
+                    var queryParams = {
+                        type: 2,
+                        score: null,
+                        createBy: null,
+                        updateBy: null,
+                        pageSize: 10,
+                        pageNum: 1,
+                        orderByColumn: null,
+                        isAsc: "asc"
+                    };
+                    $.table.search("formId","bootstrap-table",queryParams);
+                    $('#questionList').show();
+                    return true;
+                case 4:
+                    // 添加填空题
+                    var queryParams = {
+                        type: 3,
+                        score: null,
+                        createBy: null,
+                        updateBy: null,
+                        pageSize: 10,
+                        pageNum: 1,
+                        orderByColumn: null,
+                        isAsc: "asc"
+                    };
+                    $.table.search("formId","bootstrap-table",queryParams);
+                    $('#questionList').show();
+                    return true;
+            }
+            return true;
+        },
+        onFinishing: function (event, newIndex) {/*点击 提交 前 触发的事件，默认验证结果是false */
+            return true;
+        },
+        onFinished: function (event, newIndex) {/*点击 提交 后触发的事件*/
+            submitHandler();
+        }
+    });
+
+    //Add step
+    // wizard.steps("add", {
+    //     title: "HTML code",
+    //     bodyTag: "h1",
+    //     content: "<strong>HTML code</strong>"
+    // });
+</script>
+</body>
+</html>

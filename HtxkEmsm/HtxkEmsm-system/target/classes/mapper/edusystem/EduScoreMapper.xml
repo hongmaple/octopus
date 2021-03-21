@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduScoreMapper">
+
+    <resultMap type="EduScore" id="EduScoreResult">
+        <result property="scoreId" column="score_id"/>
+        <result property="scoreStudentid" column="score_studentid"/>
+        <result property="classCourseCourseId" column="class_course_course_id"/>
+        <result property="score" column="score"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="describe" column="describe"/>
+    </resultMap>
+
+    <sql id="selectEduScoreVo">
+        select score_id, score_studentid, class_course_course_id, score, create_by, create_time, update_by, update_time, del_flag,`describe` from edu_score
+    </sql>
+
+    <select id="selectEduScoreList" parameterType="EduScore" resultMap="EduScoreResult">
+        <include refid="selectEduScoreVo"/>
+        <where>
+            <if test="scoreStudentid != null ">and score_studentid = #{scoreStudentid}</if>
+            <if test="classCourseCourseId != null ">and class_course_course_id = #{classCourseCourseId}</if>
+            <if test="score != null ">and score = #{score}</if>
+            <if test="createTime != null ">and create_time = #{createTime}</if>
+        </where>
+    </select>
+
+    <select id="selectEduScoreById" parameterType="Long" resultMap="EduScoreResult">
+        <include refid="selectEduScoreVo"/>
+        where score_id = #{scoreId}
+    </select>
+
+    <insert id="insertEduScore" parameterType="EduScore" useGeneratedKeys="true" keyProperty="scoreId">
+        insert into edu_score
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="scoreStudentid != null ">score_studentid,</if>
+            <if test="classCourseCourseId != null ">class_course_course_id,</if>
+            <if test="score != null ">score,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+            <if test="describe != null  and describe != ''">`describe`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="scoreStudentid != null ">#{scoreStudentid},</if>
+            <if test="classCourseCourseId != null ">#{classCourseCourseId},</if>
+            <if test="score != null ">#{score},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+            <if test="describe != null  and describe != ''">#{describe},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduScore" parameterType="EduScore">
+        update edu_score
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="scoreStudentid != null ">score_studentid = #{scoreStudentid},</if>
+            <if test="classCourseCourseId != null ">class_course_course_id = #{classCourseCourseId},</if>
+            <if test="score != null ">score = #{score},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+            <if test="describe != null  and describe != ''">`describe` = #{describe},</if>
+        </trim>
+        where score_id = #{scoreId}
+    </update>
+
+    <delete id="deleteEduScoreById" parameterType="Long">
+        delete from edu_score where score_id = #{scoreId}
+    </delete>
+
+    <delete id="deleteEduScoreByIds" parameterType="String">
+        delete from edu_score where score_id in
+        <foreach item="scoreId" collection="array" open="(" separator="," close=")">
+            #{scoreId}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduClassTeacherMapper">
+
+    <resultMap type="EduClassTeacher" id="EduClassTeacherResult">
+        <result property="classTeacherId" column="class_teacher_id"/>
+        <result property="classTeacherClassId" column="class_teacher_class_id"/>
+        <result property="classTeacherTeacherId" column="class_teacher_teacher_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduClassTeacherVo">
+        select class_teacher_id, class_teacher_class_id, class_teacher_teacher_id, create_by, create_time, update_by, update_time, del_flag from edu_class_teacher
+    </sql>
+
+    <select id="selectEduClassTeacherList" parameterType="EduClassTeacher" resultMap="EduClassTeacherResult">
+        SELECT * FROM edu_class_teacher ect
+        INNER JOIN edu_class ec ON ec.class_id=ect.class_teacher_class_id
+        INNER JOIN edu_teacher et ON et.teacher_id=ect.class_teacher_teacher_id
+        WHERE ect.del_flag=0
+    </select>
+    <select id="queryEduTeacherList" parameterType="EduClassTeacher" resultMap="EduClassTeacherResult">
+        <include refid="selectEduClassTeacherVo"/>
+        <where>
+        <if test="classTeacherClassId != null ">and class_teacher_class_id = #{classTeacherClassId}</if>
+        <if test="classTeacherTeacherId != null ">and class_teacher_teacher_id = #{classTeacherTeacherId}</if>
+        </where>
+    </select>
+
+    <select id="selectEduClassTeacherById" parameterType="Long" resultMap="EduClassTeacherResult">
+        <include refid="selectEduClassTeacherVo"/>
+        where class_teacher_id = #{classTeacherId}
+    </select>
+
+    <insert id="insertEduClassTeacher" parameterType="EduClassTeacher" useGeneratedKeys="true"
+            keyProperty="classTeacherId">
+        insert into edu_class_teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classTeacherClassId != null ">class_teacher_class_id,</if>
+            <if test="classTeacherTeacherId != null ">class_teacher_teacher_id,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classTeacherClassId != null ">#{classTeacherClassId},</if>
+            <if test="classTeacherTeacherId != null ">#{classTeacherTeacherId},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime} ,</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduClassTeacher" parameterType="EduClassTeacher">
+        update edu_class_teacher
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classTeacherClassId != null ">class_teacher_class_id = #{classTeacherClassId},</if>
+            <if test="classTeacherTeacherId != null ">class_teacher_teacher_id = #{classTeacherTeacherId},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+        </trim>
+        where class_teacher_id = #{classTeacherId}
+    </update>
+
+    <delete id="deleteEduClassTeacherById" parameterType="Long">
+        delete from edu_class_teacher where class_teacher_id = #{classTeacherId}
+
+--         update edu_class_teacher SET
+--         del_flag=1 WHERE class_teacher_id= #{classTeacherId}
+    </delete>
+
+    <delete id="deleteEduClassTeacherByIds" parameterType="String">
+        delete from edu_class_teacher where class_teacher_id in
+        <foreach item="classTeacherId" collection="array" open="(" separator="," close=")">
+            #{classTeacherId}
+        </foreach>
+    </delete>
+
+
+</mapper>

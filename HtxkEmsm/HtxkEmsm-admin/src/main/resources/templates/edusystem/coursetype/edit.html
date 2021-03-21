@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('修改课程类型')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-CourseType-edit" th:object="${eduCourseType}">
+        <input name="courseTypeId" th:field="*{courseTypeId}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">课程类型名：</label>
+            <div class="col-sm-8">
+                <input name="courseTypeName" th:field="*{courseTypeName}" class="form-control" type="text" required>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/CourseType";
+    $("#form-CourseType-edit").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/edit", $('#form-CourseType-edit').serialize());
+        }
+    }
+</script>
+</body>
+</html>

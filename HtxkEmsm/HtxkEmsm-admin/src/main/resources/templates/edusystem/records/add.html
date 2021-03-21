@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('新增考试记录')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <p>试卷名称：</p>
+                                <input type="text" name="qtyName"/>
+                            </li>
+                            <li>
+                                <p>时长：</p>
+                                <input type="text" name="qtyTime"/>
+                            </li>
+                            <li>
+                                <p>课程：</p>
+                                <select id="courseId" name="courseId" class="form-control m-b" required
+                                        th:with="type=${@Course.selectEduCourseList(null)}">
+                                    <option value="">所有</option>
+                                    <option th:each="Course : ${type}" th:text="${Course.getCourseName()}"
+                                            th:value="${Course.getCourseId()}"></option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>总分：</p>
+                                <input type="text" name="score"/>
+                            </li>
+                            <li>
+                                <p>创建者：</p>
+                                <input type="text" name="createBy"/>
+                            </li>
+                            <li class="select-time">
+                                <p>创建时间：</p>
+                                <input type="text" class="time-input" id="CreateStartTime" placeholder="开始时间"
+                                       name="params[beginCreateTime]"/>
+                                <span>-</span>
+                                <input type="text" class="time-input" id="CreateEndTime" placeholder="结束时间"
+                                       name="params[endCreateTime]"/>
+                            </li>
+                            <li>
+                                <p>更新者：</p>
+                                <input type="text" name="updateBy"/>
+                            </li>
+                            <li class="select-time">
+                                <p>更新时间：</p>
+                                <input type="text" class="time-input" id="UpdateStartTime" placeholder="开始时间"
+                                       name="params[beginUpdateTime]"/>
+                                <span>-</span>
+                                <input type="text" class="time-input" id="updateEndTime" placeholder="结束时间"
+                                       name="params[endUpdateTime]"/>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                        class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                        class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="edusystem:paper:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript" th:inline="javascript">
+    var CoursMap = new Map();
+    function queryCoursMap() {
+        //获取所课程
+        var CourseList = [[${@Course.selectEduCourseList(null)}]];
+        $(CourseList).each(function () {
+            CoursMap.set(this.courseId, this.courseName);
+        });
+    }
+    var prefix = ctx + "edusystem/records"
+    var addFlag = ctx+"/edusystem/records/examination/"
+    var paperPrefix = ctx + "edusystem/paper";
+    function examination(id) {
+        $.modal.openTab("答题",prefix +"/examination/"+id);
+    }
+
+    $(function () {
+        queryCoursMap();
+        var options = {
+            url: paperPrefix + "/list",
+            createUrl: paperPrefix + "/add",
+            updateUrl: paperPrefix + "/edit/{id}",
+            removeUrl: paperPrefix + "/remove",
+            exportUrl: paperPrefix + "/export",
+            modalName: "试卷",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'id',
+                    title: '试卷号',
+                    visible: false
+                },
+                {
+                    field: 'qtyName',
+                    title: '试卷名称'
+                },
+                {
+                    field: 'qtyTime',
+                    title: '时长'
+                },
+                {
+                    field: 'courseId',
+                    title: '课程',
+                    formatter: function (value, row, index) {
+                        return CoursMap.get(row.courseId);
+                    }
+                },
+                {
+                    field: 'score',
+                    title: '总分'
+                },
+                {
+                    field: 'createBy',
+                    title: '出题人'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' +  '" href="javascript:void(0)" onclick="examination(\'' + row.id + '\')"><i class="fa fa-edit"></i>答题</a> ');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

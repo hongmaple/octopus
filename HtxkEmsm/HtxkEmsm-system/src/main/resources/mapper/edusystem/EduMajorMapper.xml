@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduMajorMapper">
+
+    <resultMap type="EduMajor" id="EduMajorResult">
+        <id property="majorStudiedid" column="Major_studiedId"/>
+        <result property="majorStudiedname" column="Major_studiedName"/>
+        <result property="describe" column="Major_describe"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+    <sql id="selectEduMajorVo">
+        select Major_studiedId, Major_studiedName, Major_describe, create_by, create_time, update_by, update_time, del_flag from edu_major
+    </sql>
+
+    <select id="selectEduMajorList" parameterType="EduMajor" resultMap="EduMajorResult">
+        <include refid="selectEduMajorVo"/>
+        <where>
+            <if test="majorStudiedname != null  and majorStudiedname != ''">and Major_studiedName like concat('%',
+                #{majorStudiedname}, '%')
+            </if>
+            and del_flag = 0
+        </where>
+    </select>
+
+    <select id="selectEduMajorById" parameterType="Long" resultMap="EduMajorResult">
+        <include refid="selectEduMajorVo"/>
+        where Major_studiedId = #{majorStudiedid} and del_flag = 0
+    </select>
+
+    <insert id="insertEduMajor" parameterType="EduMajor">
+        insert into edu_major
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="majorStudiedid != null ">Major_studiedId,</if>
+            <if test="majorStudiedname != null  and majorStudiedname != ''">Major_studiedName,</if>
+            <if test="describe != null  and describe != ''">Major_describe,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="majorStudiedid != null ">#{majorStudiedid},</if>
+            <if test="majorStudiedname != null  and majorStudiedname != ''">#{majorStudiedname},</if>
+            <if test="describe != null  and describe != ''">#{describe},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+        </trim>
+    </insert>
+
+    <update id="updateEduMajor" parameterType="EduMajor">
+        update edu_major
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="majorStudiedname != null  and majorStudiedname != ''">Major_studiedName = #{majorStudiedname},
+            </if>
+            <if test="describe != null  and describe != ''">Major_describe = #{describe},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+        </trim>
+        where Major_studiedId = #{majorStudiedid}
+    </update>
+
+    <delete id="deleteEduMajorById" parameterType="Long">
+       update edu_major set del_Flag=2 where Major_studiedId = #{majorStudiedid}
+    </delete>
+
+    <delete id="deleteEduMajorByIds" parameterType="String">
+        update edu_major set del_Flag = 2 where Major_studiedId in
+        <foreach item="majorStudiedid" collection="array" open="(" separator="," close=")">
+            #{majorStudiedid}
+        </foreach>
+    </delete>
+    <resultMap id="eduMajorAllresult" type="EduMajor">
+        <id property="majorStudiedid" column="Major_studiedId"/>
+        <result property="majorStudiedname" column="Major_studiedName"/>
+        <result property="describe" column="Major_describe"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <collection property="eduClasses" ofType="com.htxk.edusystem.domain.EduClass">
+            <id property="classId" column="class_id"/>
+            <result property="className" column="class_name"/>
+            <result property="classDate" column="class_Date"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="updateTime" column="update_time"/>
+            <result property="delFlag" column="del_flag"/>
+            <result property="classMajor" column="class_Major"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectEduMajorAllList" parameterType="EduMajor" resultMap="eduMajorAllresult">
+        select m.Major_studiedId,m.Major_studiedName,s.class_id,s.class_name from edu_major m
+        left join edu_class s
+        on m.Major_studiedId = s.class_Major
+        <where>
+            <if test="majorStudiedid != null  and majorStudiedid != ''">
+                and Major_studiedId = #{majorStudiedid}
+            </if>
+            and m.del_flag = 0 and s.del_flag = 0
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <th:block th:include="include :: header('修改班级信息')"/>
+    <th:block th:include="include :: datetimepicker-css"/>
+    <th:block th:include="include :: select2-css"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-class-edit" th:object="${eduClass}">
+        <input name="classId" th:field="*{classId}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">班级名：</label>
+            <div class="col-sm-8">
+                <input name="className" th:field="*{className}" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">开班时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input name="classDate" th:value="${#dates.format(eduClass.classDate, 'yyyy-MM-dd')}"
+                           class="form-control" placeholder="yyyy-MM-dd" type="text" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">班级专业：</label>
+            <div class="col-sm-8">
+                <select name="classMajor" class="form-control m-b" required>
+                    <option th:each="eduMajor:${eduMajors}" th:value="${eduMajor.majorStudiedid}"
+                            th:text="${eduMajor.majorStudiedname}" th:field="*{classMajor}"></option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: datetimepicker-js"/>
+<th:block th:include="include :: select2-js"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/class";
+    $("#form-class-edit").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/edit", $('#form-class-edit').serialize());
+        }
+    }
+
+    $("input[name='classDate']").datetimepicker({
+        format: "yyyy-mm-dd",
+        minView: "month",
+        autoclose: true
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('修改题库')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-question-edit" th:object="${eduQuestion}">
+        <input name="id" th:field="*{id}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">题目类型：</label>
+            <div class="col-sm-8">
+                <select name="type" class="form-control m-b"
+                        th:with="type=${@dict.getType('QuestionTypes')}" required>
+                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+                            th:value="${dict.dictValue}" th:field="*{type}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">题目标题：</label>
+            <div class="col-sm-8">
+                <textarea name="title" class="form-control" required>[[*{title}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">题目选项：</label>
+            <div class="col-sm-8">
+                <textarea name="sel" class="form-control">[[*{sel}]]</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">题目分值：</label>
+            <div class="col-sm-8">
+                <input name="score" th:field="*{score}" class="form-control"
+                       type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">题目答案/关键词：</label>
+            <div class="col-sm-8">
+                <textarea name="answer" class="form-control" required>[[*{answer}]]</textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/question";
+    $("#form-question-edit").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/edit", $('#form-question-edit').serialize());
+        }
+    }
+</script>
+</body>
+</html>
