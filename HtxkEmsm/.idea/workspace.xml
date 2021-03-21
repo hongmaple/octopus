@@ -51,10 +51,8 @@
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduClassTeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduClassTeacherController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduCourseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduCourseTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduCourseTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduQuestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduStudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduTeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduTeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduTestRecordsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/java/com/htxk/edusystem/controller/EduTestRecordsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/application-druid.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/static/ruoyi/js/ry-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/static/ruoyi/js/ry-ui.js" afterDir="false" />
@@ -63,12 +61,6 @@
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/course.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/course/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/paper.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/paper/paper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/question/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/question/question.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/records/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/records/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/records/records.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/records/records.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/main.html" afterDir="false" />
@@ -80,22 +72,14 @@
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduClassTeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduClassTeacherController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduCourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduCourseController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduCourseTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduCourseTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduQuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduQuestionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduStudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduStudentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduTeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduTeacherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduTestRecordsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/com/htxk/edusystem/controller/EduTestRecordsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/static/ruoyi/js/ry-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/static/ruoyi/js/ry-ui.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/ClassTeacher/ClassTeacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/ClassTeacher/ClassTeacher.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/ClassTeacher/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/ClassTeacher/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/course.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/course/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/paper.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/paper/paper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/question/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/question/question.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/records/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/records/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/records/records.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/edusystem/records/records.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-admin/target/classes/templates/main.html" afterDir="false" />
@@ -143,32 +127,16 @@
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-quartz/target/surefire-reports/TEST-com.htxk.AppTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-quartz/target/surefire-reports/com.htxk.AppTest.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduMajor.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduMajor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduPaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduPaper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduTestRecords.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/domain/EduTestRecords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/IEduPaperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/IEduPaperService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduCourseTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduCourseTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduPaperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduPaperServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduQuestionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduTestRecordsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/java/com/htxk/edusystem/service/impl/EduTestRecordsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduCourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduCourseMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduMajorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduMajorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduScoreMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduScoreMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduTestRecordsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/src/main/resources/mapper/edusystem/EduTestRecordsMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/HtxkEmsm-system-1.0.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduMajor.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduMajor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduPaper.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduPaper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduQuestion.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduQuestion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduTestRecords.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/domain/EduTestRecords.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/IEduPaperService.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/IEduPaperService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduCourseTypeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduCourseTypeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduPaperServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduPaperServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduQuestionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduQuestionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduTestRecordsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/com/htxk/edusystem/service/impl/EduTestRecordsServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduCourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduCourseMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduMajorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduMajorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduScoreMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduScoreMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduTestRecordsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HtxkEmsm-system/target/classes/mapper/edusystem/EduTestRecordsMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/maven-archiver/pom.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HtxkEmsm-system/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
@@ -176,33 +144,6 @@
       <change beforePath="$PROJECT_DIR$/HtxkEmsm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HtxkEmsm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/mapleemsmplus.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/mapleemsmplus.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/controller/EduPaperController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/controller/EduQuestionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/controller/EduTestRecordsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/domain/EduPaper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/domain/EduQuestion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/domain/EduTestRecords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/mapper/EduPaperMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/mapper/EduQuestionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/mapper/EduTestRecordsMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/IEduPaperService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/IEduQuestionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/IEduTestRecordsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/impl/EduPaperServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/impl/EduQuestionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/java/com/htxk/edusystem/service/impl/EduTestRecordsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/mapper/edusystem/EduPaperMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/mapper/edusystem/EduQuestionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/mapper/edusystem/EduTestRecordsMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/paper/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/paper/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/paper/paper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/question/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/question/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/question/question.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/records/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/records/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main/resources/templates/edusystem/records/records.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/HtxkEmsm-common/target/" />
@@ -280,7 +221,7 @@
       <file leaf-file-name="teachingMaterial.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/teachingMaterial/teachingMaterial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="283">
               <caret line="103" column="95" selection-start-line="103" selection-start-column="95" selection-end-line="103" selection-end-column="95" />
             </state>
           </provider>
@@ -1067,7 +1008,7 @@
       <workItem from="1616212038012" duration="974000" />
       <workItem from="1616213349553" duration="2957000" />
       <workItem from="1616220286985" duration="63738000" />
-      <workItem from="1616340983250" duration="3082000" />
+      <workItem from="1616340983250" duration="3688000" />
     </task>
     <task id="LOCAL-00001" summary="版权信息修改">
       <created>1577979889528</created>
@@ -1280,7 +1221,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70751000" />
+    <option name="totallyTimeSpent" value="71357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1299,7 +1240,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.2497979" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.21296297" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.21296297" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3288201" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -1819,7 +1760,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HtxkEmsm-admin/src/main/resources/templates/edusystem/teachingMaterial/teachingMaterial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="283">
           <caret line="103" column="95" selection-start-line="103" selection-start-column="95" selection-end-line="103" selection-end-column="95" />
         </state>
       </provider>
