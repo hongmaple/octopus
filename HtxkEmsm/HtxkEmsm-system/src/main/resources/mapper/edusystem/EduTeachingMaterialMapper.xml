@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htxk.edusystem.mapper.EduTeachingMaterialMapper">
+
+    <resultMap type="eduTeachingMaterial" id="eduTeachingMaterialResult">
+                    <result property="id" column="id"/>
+                    <result property="fileName" column="file_name"/>
+                    <result property="url" column="url"/>
+                    <result property="createBy" column="create_by"/>
+                    <result property="createTime" column="create_time"/>
+                    <result property="updateBy" column="update_by"/>
+                    <result property="updateTime" column="update_time"/>
+                    <result property="delFlag" column="del_flag"/>
+                    </resultMap>
+
+    <sql id="selecteduTeachingMaterialVo">
+        select id, file_name, url, create_by, create_time, update_by, update_time, del_flag from edu_teaching_material
+    </sql>
+
+    <select id="selecteduTeachingMaterialList" parameterType="eduTeachingMaterial" resultMap="eduTeachingMaterialResult">
+        <include refid="selecteduTeachingMaterialVo"/>
+        <where>
+                                                                                                    <if test="fileName != null  and fileName != ''">
+                            and file_name like concat('%', #{fileName}, '%')
+                        </if>
+                                                                                                                                                                                                                                </where>
+            </select>
+
+    <select id="selecteduTeachingMaterialById" parameterType="Long" resultMap="eduTeachingMaterialResult">
+                    <include refid="selecteduTeachingMaterialVo"/>
+            where id = #{id}
+            </select>
+
+    <insert id="inserteduTeachingMaterial" parameterType="eduTeachingMaterial" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into edu_teaching_material
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                                                                            <if test="fileName != null  and fileName != ''">file_name,
+                    </if>
+                                                                <if test="url != null  and url != ''">url,
+                    </if>
+                                                                <if test="createBy != null  and createBy != ''">create_by,
+                    </if>
+                                                                <if test="createTime != null ">create_time,
+                    </if>
+                                                                <if test="updateBy != null  and updateBy != ''">update_by,
+                    </if>
+                                                                <if test="updateTime != null ">update_time,
+                    </if>
+                                                                <if test="delFlag != null  and delFlag != ''">del_flag,
+                    </if>
+                                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                                                                            <if test="fileName != null  and fileName != ''">#{fileName},
+                    </if>
+                                                                <if test="url != null  and url != ''">#{url},
+                    </if>
+                                                                <if test="createBy != null  and createBy != ''">#{createBy},
+                    </if>
+                                                                <if test="createTime != null ">#{createTime},
+                    </if>
+                                                                <if test="updateBy != null  and updateBy != ''">#{updateBy},
+                    </if>
+                                                                <if test="updateTime != null ">#{updateTime},
+                    </if>
+                                                                <if test="delFlag != null  and delFlag != ''">#{delFlag},
+                    </if>
+                                    </trim>
+    </insert>
+
+    <update id="updateeduTeachingMaterial" parameterType="eduTeachingMaterial">
+        update edu_teaching_material
+        <trim prefix="SET" suffixOverrides=",">
+                                                                            <if test="fileName != null  and fileName != ''">file_name = #{fileName},
+                    </if>
+                                                                <if test="url != null  and url != ''">url = #{url},
+                    </if>
+                                                                <if test="createBy != null  and createBy != ''">create_by = #{createBy},
+                    </if>
+                                                                <if test="createTime != null ">create_time = #{createTime},
+                    </if>
+                                                                <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},
+                    </if>
+                                                                <if test="updateTime != null ">update_time = #{updateTime},
+                    </if>
+                                                                <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},
+                    </if>
+                                    </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteeduTeachingMaterialById" parameterType="Long">
+        delete from edu_teaching_material where id = #{id}
+    </delete>
+
+    <delete id="deleteeduTeachingMaterialByIds" parameterType="String">
+        delete from edu_teaching_material where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

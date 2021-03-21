@@ -193,6 +193,10 @@ public class EduTestRecords extends BaseEntity {
         return delFlag;
     }
 
+    public EduTestRecords() {
+        this.setScore(0D);
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("EduTestRecords{");

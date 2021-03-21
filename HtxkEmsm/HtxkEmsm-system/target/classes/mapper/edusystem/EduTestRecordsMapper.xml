@@ -24,7 +24,7 @@
     </resultMap>
 
     <sql id="selectEduTestRecordsVo">
-        select id, paper_id, sing_answer_sheet, muti_answer_sheet, jud_answer_sheet, fill_answer_sheet, ess_answer_sheet, course_id, describe, score, total_points, create_by, create_time, update_by, update_time, del_flag from edu_test_records
+        select id, paper_id, sing_answer_sheet, muti_answer_sheet, jud_answer_sheet, fill_answer_sheet, ess_answer_sheet, course_id, `describe`, score, total_points, create_by, create_time, update_by, update_time, del_flag from edu_test_records
     </sql>
 
     <select id="selectEduTestRecordsList" parameterType="EduTestRecords" resultMap="EduTestRecordsResult">
@@ -52,7 +52,7 @@
                 and course_id = #{courseId}
             </if>
             <if test="describe != null  and describe != ''">
-                and describe = #{describe}
+                and `describe` = #{describe}
             </if>
             <if test="score != null ">
                 and score = #{score}
@@ -166,7 +166,8 @@
             </if>
             <if test="courseId != null ">course_id = #{courseId},
             </if>
-            <if test="describe != null  and describe != ''">describe = #{describe},
+            <if test="describe != null  and describe != ''">
+                `describe` = #{describe},
             </if>
             <if test="score != null ">score = #{score},
             </if>

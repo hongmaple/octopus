@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="include :: header('题库列表')"/>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="container-div">
+        <form class="form-horizontal m" id="form-records-base">
+            <div class="row form-horizontal">
+                <div class="col-sm-12" style="text-align:center">
+                    <h1 th:text="${paper.qtyName}"></h1>
+                    时长：<label th:text="${paper.qtyTime}"></label>
+                    总分：<label th:text="${paper.score}"></label>
+                </div>
+            </div>
+            <input name="paperId" style="display: none" class="form-control" th:value="${paper.id}" type="text">
+            <input name="totalPoints" style="display: none" th:value="${paper.score}"  class="form-control" type="text">
+            <select name="courseId" style="display: none"  class="form-control m-b">
+                <option th:value="${paper.courseId}"></option>
+            </select>
+        </form>
+
+        <form class="form-horizontal m" id="form-records-sing">
+            <div class="row form-horizontal">
+                <h2>一.单选题：</h2>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-xs-10" th:each="sing,singNum:${paper.qtySingList}">
+                            <h4 th:text="${singNum.count}+'. '+${sing.title}"></h4>
+                            <div class="col-sm-10" th:each="sel,index:${sing.sels}">
+                                <label class="radio-box">
+                                    <input type="radio" th:value="${index.count}" th:id="${sing.id}+'sing'+${index.count}"
+                                           th:name="${sing.id}">
+                                    <label th:for="'sing'+${index.count}" class="" th:text="${sel}"></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form class="form-horizontal m" id="form-records-muti">
+            <div class="row form-horizontal">
+                <h2>二.多选题：</h2>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-xs-10" th:each="muti,mutiNum:${paper.qtyMutiList}">
+                            <h4 th:text="${mutiNum.count}+'. '+${muti.title}"></h4>
+                            <div class="col-sm-10" th:each="sel,index:${muti.sels}">
+                                <label class="check-box">
+                                    <input th:value="${index.count}" th:id="${muti.id}+'muti'+${index.count}"
+                                           th:name="${muti.id}" type="checkbox">
+                                </label>
+                                <label th:for="'sing'+${mutiNum.count}" th:text="${sel}">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form class="form-horizontal m" id="form-records-jud">
+            <div class="row form-horizontal">
+                <h2>三.判断题：</h2>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-xs-10" th:each="Jud,JudNum:${paper.qtyJudList}">
+                            <h4 th:text="${JudNum.count}+'. '+${Jud.title}"></h4>
+                            <div class="col-sm-10">
+                                <label class="radio-box">
+                                    <input type="radio" value="1" id="Jud1"
+                                           th:name="${Jud.id}">
+                                    <label th:for="'jud1'">对</label>
+                                </label>
+                                <label class="radio-box">
+                                    <input type="radio" value="2" id="Jud2"
+                                           th:name="${Jud.id}">
+                                    <label th:for="'jud1'">错</label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form class="form-horizontal m" id="form-records-fill">
+            <div class="row form-horizontal">
+                <h2>四.填空题：</h2>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-xs-10" th:each="Fill,FillNum:${paper.qtyFillList}">
+                            <h4 th:text="${FillNum.count}+'. '+${Fill.title}"></h4>
+                            <div class="col-sm-10">
+                                <di>
+                                    <textarea th:id="${Fill.id}"
+                                              th:name="${Fill.id}" class="form-control"></textarea>
+                                </di>
+                                <label>
+                                    若有多空请用@符分开
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-sm btn-primary"
+                onclick="submitHandler()"><i class="fa fa-check"></i>保 存
+        </button>&nbsp;
+    </div>
+    <form class="form-horizontal m" id="form-records-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">描述：</label>
+            <div class="col-sm-8">
+                <textarea name="describe" class="form-control"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "edusystem/records"
+    $("#form-records-add").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        var base = $('#form-records-base').serialize();
+        console.log(JSON.stringify($.common.formToJSON("form-records-fill")));
+        console.log(JSON.stringify($.common.formToJSON("form-records-muti")));
+        $.operate.save(prefix + "/add", base
+            +"&singAnswerSheet="
+            +JSON.stringify($.common.formToJSON("form-records-sing"))
+            +"&mutiAnswerSheet="
+            +JSON.stringify($.common.formToJSON("form-records-muti"))
+            +"&judAnswerSheet="
+            +JSON.stringify($.common.formToJSON("form-records-jud"))
+            +"&fillAnswerSheet="
+            +JSON.stringify($.common.formToJSON("form-records-fill")));
+    }
+</script>
+</body>
+</html>

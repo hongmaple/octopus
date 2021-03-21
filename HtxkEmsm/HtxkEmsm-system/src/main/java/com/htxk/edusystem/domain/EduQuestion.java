@@ -38,6 +38,11 @@ public class EduQuestion extends BaseEntity {
     private String sel;
 
     /**
+     * 题目选项数组
+     */
+    private String[] sels;
+
+    /**
      * 题目分值
      */
     @Excel(name = "题目分值")
@@ -48,6 +53,11 @@ public class EduQuestion extends BaseEntity {
      */
     @Excel(name = "题目答案/关键词")
     private String answer;
+
+    /**
+     * 题目答案/关键词数组
+     */
+    private String[] answers;
 
     /**
      * 删除标志（0代表存在 2代表删除）
@@ -108,6 +118,22 @@ public class EduQuestion extends BaseEntity {
 
     public String getDelFlag() {
         return delFlag;
+    }
+
+    public String[] getSels() {
+        return sels;
+    }
+
+    public void setSels(String[] sels) {
+        this.sels = sels;
+    }
+
+    public String[] getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
     }
 
     @Override

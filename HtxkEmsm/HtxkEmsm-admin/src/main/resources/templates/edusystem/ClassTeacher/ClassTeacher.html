@@ -13,20 +13,10 @@
                         <li>
                             <p>班级名：</p>
                             <input type="text" name="class_name"/>
-                            <select name="class_name" th:with="type=${@dict.getType('class_name')}">
-                                <option value="">所有</option>
-                                <option th:each="dict : ${type}" th:text="${classTeacher.}"
-                                        th:value="${eduClassList.dictValue}"></option>
-                            </select>
                         </li>
                         <li>
                             <p>教师名：</p>
                             <input type="text" name="teacher_name"/>
-                            <select name="teacher_name" th:with="type=${@dict.getType('teacher_name')}">
-                                <option value="">所有</option>
-                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
-                                        th:value="${dict.dictValue}"></option>
-                            </select>
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i

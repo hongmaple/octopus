@@ -24,10 +24,11 @@
                         </li>
                         <li>
                             <p>课程类型：</p>
-                            <select name="courseTypeid" th:with="type=${@dict.getType('')}">
-                                <option value="">所有</option>
-                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
-                                        th:value="${dict.dictValue}"></option>
+                            <select id="courseTypeid" name="courseTypeid" class="form-control m-b" required
+                                              th:with="type=${@CourseType.selectEduCourseTypeList(null)}">
+                            <option value="">所有</option>
+                            <option th:each="CourseType : ${type}" th:text="${CourseType.getCourseTypeName()}"
+                                    th:value="${CourseType.getCourseTypeId()}"></option>
                             </select>
                         </li>
                         <li>

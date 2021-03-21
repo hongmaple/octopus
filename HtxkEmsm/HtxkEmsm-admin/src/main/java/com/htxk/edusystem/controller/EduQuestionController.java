@@ -57,6 +57,20 @@ public class EduQuestionController extends BaseController {
     }
 
     /**
+     * 查询题库
+     *
+     * @param id 题库ID
+     * @return 题库
+     */
+    @ApiOperation("查询题目")
+    @RequiresPermissions("edusystem:question:byId")
+    @GetMapping("/{id}")
+    @ResponseBody
+    public EduQuestion selectEduQuestionById(@PathVariable Long id) {
+        return eduQuestionService.selectEduQuestionById(id);
+    }
+
+    /**
      * 导出题库列表
      */
     @ApiOperation("导出题库列表")

@@ -5,6 +5,8 @@ import com.htxk.ruoyi.common.core.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import java.util.List;
+
 
 /**
  * 试卷对象 edu_paper
@@ -39,10 +41,20 @@ public class EduPaper extends BaseEntity {
     private String qtySing;
 
     /**
+     * 单选题列表详情
+     */
+    private List<EduQuestion> qtySingList;
+
+    /**
      * 多选题id数组
      */
     @Excel(name = "多选题id数组")
     private String qtyMuti;
+
+    /**
+     * 多选题列表详情
+     */
+    private List<EduQuestion> qtyMutiList;
 
     /**
      * 判断题id数组
@@ -51,16 +63,31 @@ public class EduPaper extends BaseEntity {
     private String qtyJud;
 
     /**
+     * 判断题列表详情
+     */
+    private List<EduQuestion> qtyJudList;
+
+    /**
      * 填空题id数组
      */
     @Excel(name = "填空题id数组")
     private String qtyFill;
 
     /**
+     * 填空题列表详情
+     */
+    private List<EduQuestion> qtyFillList;
+
+    /**
      * 简答题id数组
      */
     @Excel(name = "简答题id数组")
     private String qtyEss;
+
+    /**
+     * 简答题i列表详情
+     */
+    private List<EduQuestion> qtyEssList;
 
     /**
      * 课程id
@@ -165,6 +192,46 @@ public class EduPaper extends BaseEntity {
 
     public String getDelFlag() {
         return delFlag;
+    }
+
+    public List<EduQuestion> getQtySingList() {
+        return qtySingList;
+    }
+
+    public void setQtySingList(List<EduQuestion> qtySingList) {
+        this.qtySingList = qtySingList;
+    }
+
+    public List<EduQuestion> getQtyMutiList() {
+        return qtyMutiList;
+    }
+
+    public void setQtyMutiList(List<EduQuestion> qtyMutiList) {
+        this.qtyMutiList = qtyMutiList;
+    }
+
+    public List<EduQuestion> getQtyJudList() {
+        return qtyJudList;
+    }
+
+    public void setQtyJudList(List<EduQuestion> qtyJudList) {
+        this.qtyJudList = qtyJudList;
+    }
+
+    public List<EduQuestion> getQtyFillList() {
+        return qtyFillList;
+    }
+
+    public void setQtyFillList(List<EduQuestion> qtyFillList) {
+        this.qtyFillList = qtyFillList;
+    }
+
+    public List<EduQuestion> getQtyEssList() {
+        return qtyEssList;
+    }
+
+    public void setQtyEssList(List<EduQuestion> qtyEssList) {
+        this.qtyEssList = qtyEssList;
     }
 
     @Override

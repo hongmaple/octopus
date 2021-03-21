@@ -96,6 +96,10 @@ public class Global {
         return getProfile() + "/avatar";
     }
 
+    public static String getMaterial() {
+        return getProfile() + "/material";
+    }
+
     /**
      * 获取下载路径
      */

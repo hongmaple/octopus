@@ -16,9 +16,13 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">课程类型ID：</label>
             <div class="col-sm-8">
-                <select name="courseTypeid" class="form-control m-b" required>
-                    <option value="">请选择</option>
+                <select id="courseTypeid" name="courseTypeid" class="form-control m-b" required
+                        th:with="type=${@CourseType.selectEduCourseTypeList(null)}">
+                    <option value="">所有</option>
+                    <option th:each="CourseType : ${type}" th:text="${CourseType.getCourseTypeName()}"
+                            th:value="${CourseType.getCourseTypeId()}"></option>
                 </select>
+                </li>
                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
             </div>
         </div>

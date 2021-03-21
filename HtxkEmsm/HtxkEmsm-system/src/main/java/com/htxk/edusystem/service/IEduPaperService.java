@@ -59,4 +59,12 @@ public interface IEduPaperService {
      * @return 结果
      */
     public int deleteEduPaperById(Long id);
-    }
+
+    /**
+     * 查询试卷详情
+     *
+     * @param id 试卷id
+     * @return 试卷详情
+     */
+    public EduPaper selectEduPaperDetails(Long id);
+}

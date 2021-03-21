@@ -1,6 +1,8 @@
 package com.htxk.edusystem.controller;
 
+import com.htxk.edusystem.domain.EduPaper;
 import com.htxk.edusystem.domain.EduTestRecords;
+import com.htxk.edusystem.service.IEduPaperService;
 import com.htxk.edusystem.service.IEduTestRecordsService;
 import com.htxk.ruoyi.common.annotation.Log;
 import com.htxk.ruoyi.common.core.controller.BaseController;
@@ -33,6 +35,8 @@ public class EduTestRecordsController extends BaseController {
 
     @Autowired
     private IEduTestRecordsService eduTestRecordsService;
+    @Autowired
+    private IEduPaperService eduPaperService;
 
     @RequiresPermissions("edusystem:records:view")
     @GetMapping()
@@ -72,7 +76,17 @@ public class EduTestRecordsController extends BaseController {
     public String add() {
             return prefix + "/add";
         }
-    
+
+    /**
+     * 答题
+     */
+    @GetMapping("/examination/{paperId}")
+    public String examination(ModelMap mmap,@PathVariable Long paperId) {
+        System.out.println(paperId);
+        EduPaper eduPaper = eduPaperService.selectEduPaperDetails(paperId);
+        mmap.put("paper",eduPaper);
+        return prefix + "/examination";
+    }
     /**
      * 新增保存考试记录
      */
@@ -104,7 +118,6 @@ public class EduTestRecordsController extends BaseController {
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(EduTestRecords eduTestRecords) {
-
         return toAjax(eduTestRecordsService.updateEduTestRecords(eduTestRecords));
     }
 

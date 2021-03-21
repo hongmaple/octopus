@@ -444,6 +444,21 @@ var table = {
                 }
                 return $.common.uniqueFn(rows);
             },
+            // 查询表格指定不计是否重复列值
+            selectColumnsNoUniqueFn: function (column) {
+                var rows = $.map($("#" + table.options.id).bootstrapTable('getSelections'), function (row) {
+                    return row[column];
+                });
+                if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
+                    var selectedRows = table.rememberSelecteds[table.options.id];
+                    if ($.common.isNotEmpty(selectedRows)) {
+                        rows = $.map(table.rememberSelecteds[table.options.id], function (row) {
+                            return row[column];
+                        });
+                    }
+                }
+                return rows;
+            },
             // 获取当前页选中或者取消的行ID
             affectedRowIds: function (rows) {
                 var column = $.common.isEmpty(table.options.uniqueId) ? table.options.columns[1].field : table.options.uniqueId;
