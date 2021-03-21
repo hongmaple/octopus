@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2021-03-22 00:32:43
+Date: 2021-03-22 00:35:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -697,7 +697,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'Maple1616343886421', '1616344363620', '15000');
+INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'Maple1616343886421', '1616344513636', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
