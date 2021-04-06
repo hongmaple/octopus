@@ -1,7 +1,7 @@
 # octopus
 
 ## octopus高校教学综合平台 介绍
-###  - [HtxkEmsm的进阶版](https://github.com/hongmaple/HtxkEmsm "HtxkEmsm的进阶版")
+###  - [HtxkEmsm第一版](https://github.com/hongmaple/HtxkEmsm "HtxkEmsm第一版")
 octopus高校教学综合平台，主要用于对教师，学生，管理的信息管理，课程管理，专业信息管理，班级管理，可以添加题库，可以上传下载教学资料，可以设置考试试卷，可以进行在线考试和自动评分
 
 #### 软件架构
