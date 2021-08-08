@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-admin/HtxkEmsm-admin.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-admin/HtxkEmsm-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-common/HtxkEmsm-common.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-common/HtxkEmsm-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-framework/HtxkEmsm-framework.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-framework/HtxkEmsm-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-generator/HtxkEmsm-generator.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-generator/HtxkEmsm-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-quartz/HtxkEmsm-quartz.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-quartz/HtxkEmsm-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-system/HtxkEmsm-system.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-system/HtxkEmsm-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/octopus.iml" filepath="$PROJECT_DIR$/.idea/octopus.iml" />
+    </modules>
+  </component>
+</project>
