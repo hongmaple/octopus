@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -15,13 +16,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="HtxkEmsm" target="1.5" />
-      <module name="HtxkEmsm-admin" target="1.5" />
-      <module name="HtxkEmsm-common" target="1.5" />
-      <module name="HtxkEmsm-framework" target="1.5" />
-      <module name="HtxkEmsm-generator" target="1.5" />
-      <module name="HtxkEmsm-quartz" target="1.5" />
-      <module name="HtxkEmsm-system" target="1.5" />
+      <module name="HtxkEmsm" target="1.8" />
+      <module name="HtxkEmsm-admin" target="1.8" />
+      <module name="HtxkEmsm-common" target="1.8" />
+      <module name="HtxkEmsm-framework" target="1.8" />
+      <module name="HtxkEmsm-generator" target="1.8" />
+      <module name="HtxkEmsm-quartz" target="1.8" />
+      <module name="HtxkEmsm-system" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

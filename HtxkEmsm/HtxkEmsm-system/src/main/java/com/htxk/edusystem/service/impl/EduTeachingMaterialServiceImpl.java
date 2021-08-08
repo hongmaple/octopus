@@ -2,14 +2,12 @@ package com.htxk.edusystem.service.impl;
 
 import com.htxk.edusystem.domain.eduTeachingMaterial;
 import com.htxk.edusystem.mapper.EduTeachingMaterialMapper;
-import com.htxk.edusystem.service.IeduTeachingMaterialService;
-import com.htxk.ruoyi.common.core.domain.Ztree;
+import com.htxk.edusystem.service.IEduTeachingMaterialService;
 import com.htxk.ruoyi.common.core.text.Convert;
 import com.htxk.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * 文件Service业务层处理
@@ -18,7 +16,7 @@ import java.util.List;
  * @date 2021-03-21
  */
 @Service
-public class EduTeachingMaterialServiceImpl implements IeduTeachingMaterialService {
+public class EduTeachingMaterialServiceImpl implements IEduTeachingMaterialService {
     @Autowired
     private EduTeachingMaterialMapper eduTeachingMaterialMapper;
 

@@ -1,7 +1,6 @@
 package com.htxk.edusystem.service;
 
 import com.htxk.edusystem.domain.eduTeachingMaterial;
-import com.htxk.ruoyi.common.core.domain.Ztree;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * @author maple
  * @date 2021-03-21
  */
-public interface IeduTeachingMaterialService {
+public interface IEduTeachingMaterialService {
     /**
      * 查询文件
      *

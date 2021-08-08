@@ -1,19 +1,15 @@
 package com.htxk.edusystem.controller;
 
 import com.htxk.edusystem.domain.eduTeachingMaterial;
-import com.htxk.edusystem.service.IeduTeachingMaterialService;
+import com.htxk.edusystem.service.IEduTeachingMaterialService;
 import com.htxk.ruoyi.common.annotation.Log;
 import com.htxk.ruoyi.common.config.Global;
 import com.htxk.ruoyi.common.core.controller.BaseController;
 import com.htxk.ruoyi.common.core.domain.AjaxResult;
-import com.htxk.ruoyi.common.core.domain.Ztree;
 import com.htxk.ruoyi.common.core.page.TableDataInfo;
 import com.htxk.ruoyi.common.enums.BusinessType;
-import com.htxk.ruoyi.common.utils.StringUtils;
 import com.htxk.ruoyi.common.utils.file.FileUploadUtils;
 import com.htxk.ruoyi.common.utils.poi.ExcelUtil;
-import com.htxk.ruoyi.framework.util.ShiroUtils;
-import com.htxk.ruoyi.system.domain.SysUser;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +27,11 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/edusystem/teachingMaterial")
-public class eduTeachingMaterialController extends BaseController {
+public class EduTeachingMaterialController extends BaseController {
     private String prefix = "edusystem/teachingMaterial";
 
     @Autowired
-    private IeduTeachingMaterialService eduTeachingMaterialService;
+    private IEduTeachingMaterialService eduTeachingMaterialService;
 
     @RequiresPermissions("edusystem:teachingMaterial:view")
     @GetMapping()
