@@ -215,7 +215,7 @@
         <if test="status != null and status != ''">status,</if>
         <if test="createBy != null and createBy != ''">create_by,</if>
         <if test="remark != null and remark != ''">remark,</if>
-        <if test="userType !=null and userType!=''">and user_type,</if>
+        <if test="userType !=null and userType!=''">user_type,</if>
         create_time
         )values(
         <if test="userId != null and userId != ''">#{userId},</if>
