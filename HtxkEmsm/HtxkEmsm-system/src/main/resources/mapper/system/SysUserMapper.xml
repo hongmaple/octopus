@@ -231,8 +231,8 @@
         <if test="status != null and status != ''">#{status},</if>
         <if test="createBy != null and createBy != ''">#{createBy},</if>
         <if test="remark != null and remark != ''">#{remark},</if>
-        <if test="userType !=null and userType!=''">#{userType}</if>
-        sysdate()
+        <if test="userType !=null and userType!=''">#{userType},</if>
+        create_time = sysdate()
         )
     </insert>
 
