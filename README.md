@@ -118,8 +118,8 @@ wx: mapleCx331   qq群：[![加入QQ群](https://img.shields.io/badge/628043364-
 ## 开源不易，谢谢打赏
 <table>
  <td>
-   <tr><img src="/image/wxPay.jpg" alt=""/></tr>
-   <tr><img src="/image/zfb.jpg" alt=""/></tr>
+   <tr><img style="height: 150px;width: 100px" src="https://gitee.com/hongmaple/netdisk/raw/master/image/wxPay.jpg" alt=""/></tr>
+   <tr><img style="height: 150px;width: 100px" src="https://gitee.com/hongmaple/netdisk/raw/master/image/zfb.jpg" alt=""/></tr>
  </td>
 </table>
 
