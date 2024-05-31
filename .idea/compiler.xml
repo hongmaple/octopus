@@ -7,12 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HtxkEmsm-framework" />
         <module name="HtxkEmsm-generator" />
-        <module name="HtxkEmsm-common" />
-        <module name="HtxkEmsm-admin" />
         <module name="HtxkEmsm-quartz" />
         <module name="HtxkEmsm-system" />
+        <module name="HtxkEmsm-common" />
+        <module name="HtxkEmsm-framework" />
+        <module name="HtxkEmsm-admin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

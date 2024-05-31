@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-generator/HtxkEmsm-generator.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-generator/HtxkEmsm-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-quartz/HtxkEmsm-quartz.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-quartz/HtxkEmsm-quartz.iml" />
       <module fileurl="file://$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-system/HtxkEmsm-system.iml" filepath="$PROJECT_DIR$/HtxkEmsm/HtxkEmsm-system/HtxkEmsm-system.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/octopus.iml" filepath="$PROJECT_DIR$/.idea/octopus.iml" />
     </modules>
   </component>
 </project>
