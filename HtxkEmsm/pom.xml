@@ -10,7 +10,7 @@
 
 
     <name>htxk</name>
-    <description>湖大信科it综合管理系统</description>
+    <description>山河大学综合管理系统</description>
 
     <properties>
         <htxk.version>1.0</htxk.version>
