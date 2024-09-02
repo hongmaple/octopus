@@ -6,7 +6,7 @@ create table sys_dept (
   dept_id           bigint(20)      not null auto_increment    comment '部门id',
   parent_id         bigint(20)      default 0                  comment '父部门id',
   ancestors         varchar(50)     default ''                 comment '祖级列表',
-  dept_name         varchar(30)     default ''                 comment '部门名称',
+  dept_name         varchar(50)     default ''                 comment '部门名称',
   order_num         int(4)          default 0                  comment '显示顺序',
   leader            varchar(20)     default null               comment '负责人',
   phone             varchar(11)     default null               comment '联系电话',
@@ -23,16 +23,7 @@ create table sys_dept (
 -- ----------------------------
 -- 初始化-部门表数据
 -- ----------------------------
-insert into sys_dept values(100,  0,   '0',          '若依科技',   0, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(101,  100, '0,100',      '深圳总公司', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(102,  100, '0,100',      '长沙分公司', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(103,  101, '0,100,101',  '研发部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(104,  101, '0,100,101',  '市场部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(105,  101, '0,100,101',  '测试部门',   3, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(106,  101, '0,100,101',  '财务部门',   4, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(107,  101, '0,100,101',  '运维部门',   5, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(108,  102, '0,100,102',  '市场部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
-insert into sys_dept values(109,  102, '0,100,102',  '财务部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
+insert into sys_dept values(100,  0,   '0','山河大学',   0, 'admin', '15888888888', 'ry@qq.com', '0', '0', 'admin', sysdate(), '', null);
 
 
 -- ----------------------------
@@ -123,7 +114,8 @@ create table sys_role (
 -- 初始化-角色信息表数据
 -- ----------------------------
 insert into sys_role values('1', '超级管理员', 'admin',  1, 1, '0', '0', 'admin', sysdate(), '', null, '超级管理员');
-insert into sys_role values('2', '普通角色',   'common', 2, 2, '0', '0', 'admin', sysdate(), '', null, '普通角色');
+insert into sys_role values('2', '教师',   'teacher', 2, 2, '0', '0', 'admin', sysdate(), '', null, '普通角色');
+insert into sys_role values('2', '学生',   'student', 3, 3, '0', '0', 'admin', sysdate(), '', null, '普通角色');
 
 
 -- ----------------------------
@@ -284,95 +276,6 @@ create table sys_role_menu (
 ) engine=innodb comment = '角色和菜单关联表';
 
 -- ----------------------------
--- 初始化-角色和菜单关联表数据
--- ----------------------------
-insert into sys_role_menu values ('2', '1');
-insert into sys_role_menu values ('2', '2');
-insert into sys_role_menu values ('2', '3');
-insert into sys_role_menu values ('2', '4');
-insert into sys_role_menu values ('2', '100');
-insert into sys_role_menu values ('2', '101');
-insert into sys_role_menu values ('2', '102');
-insert into sys_role_menu values ('2', '103');
-insert into sys_role_menu values ('2', '104');
-insert into sys_role_menu values ('2', '105');
-insert into sys_role_menu values ('2', '106');
-insert into sys_role_menu values ('2', '107');
-insert into sys_role_menu values ('2', '108');
-insert into sys_role_menu values ('2', '109');
-insert into sys_role_menu values ('2', '110');
-insert into sys_role_menu values ('2', '111');
-insert into sys_role_menu values ('2', '112');
-insert into sys_role_menu values ('2', '113');
-insert into sys_role_menu values ('2', '114');
-insert into sys_role_menu values ('2', '115');
-insert into sys_role_menu values ('2', '116');
-insert into sys_role_menu values ('2', '500');
-insert into sys_role_menu values ('2', '501');
-insert into sys_role_menu values ('2', '1000');
-insert into sys_role_menu values ('2', '1001');
-insert into sys_role_menu values ('2', '1002');
-insert into sys_role_menu values ('2', '1003');
-insert into sys_role_menu values ('2', '1004');
-insert into sys_role_menu values ('2', '1005');
-insert into sys_role_menu values ('2', '1006');
-insert into sys_role_menu values ('2', '1007');
-insert into sys_role_menu values ('2', '1008');
-insert into sys_role_menu values ('2', '1009');
-insert into sys_role_menu values ('2', '1010');
-insert into sys_role_menu values ('2', '1011');
-insert into sys_role_menu values ('2', '1012');
-insert into sys_role_menu values ('2', '1013');
-insert into sys_role_menu values ('2', '1014');
-insert into sys_role_menu values ('2', '1015');
-insert into sys_role_menu values ('2', '1016');
-insert into sys_role_menu values ('2', '1017');
-insert into sys_role_menu values ('2', '1018');
-insert into sys_role_menu values ('2', '1019');
-insert into sys_role_menu values ('2', '1020');
-insert into sys_role_menu values ('2', '1021');
-insert into sys_role_menu values ('2', '1022');
-insert into sys_role_menu values ('2', '1023');
-insert into sys_role_menu values ('2', '1024');
-insert into sys_role_menu values ('2', '1025');
-insert into sys_role_menu values ('2', '1026');
-insert into sys_role_menu values ('2', '1027');
-insert into sys_role_menu values ('2', '1028');
-insert into sys_role_menu values ('2', '1029');
-insert into sys_role_menu values ('2', '1030');
-insert into sys_role_menu values ('2', '1031');
-insert into sys_role_menu values ('2', '1032');
-insert into sys_role_menu values ('2', '1033');
-insert into sys_role_menu values ('2', '1034');
-insert into sys_role_menu values ('2', '1035');
-insert into sys_role_menu values ('2', '1036');
-insert into sys_role_menu values ('2', '1037');
-insert into sys_role_menu values ('2', '1038');
-insert into sys_role_menu values ('2', '1039');
-insert into sys_role_menu values ('2', '1040');
-insert into sys_role_menu values ('2', '1041');
-insert into sys_role_menu values ('2', '1042');
-insert into sys_role_menu values ('2', '1043');
-insert into sys_role_menu values ('2', '1044');
-insert into sys_role_menu values ('2', '1045');
-insert into sys_role_menu values ('2', '1046');
-insert into sys_role_menu values ('2', '1047');
-insert into sys_role_menu values ('2', '1048');
-insert into sys_role_menu values ('2', '1049');
-insert into sys_role_menu values ('2', '1050');
-insert into sys_role_menu values ('2', '1051');
-insert into sys_role_menu values ('2', '1052');
-insert into sys_role_menu values ('2', '1053');
-insert into sys_role_menu values ('2', '1054');
-insert into sys_role_menu values ('2', '1055');
-insert into sys_role_menu values ('2', '1056');
-insert into sys_role_menu values ('2', '1057');
-insert into sys_role_menu values ('2', '1058');
-insert into sys_role_menu values ('2', '1059');
-insert into sys_role_menu values ('2', '1060');
-insert into sys_role_menu values ('2', '1061');
-
--- ----------------------------
 -- 8、角色和部门关联表  角色1-N部门
 -- ----------------------------
 drop table if exists sys_role_dept;
@@ -386,8 +289,6 @@ create table sys_role_dept (
 -- 初始化-角色和部门关联表数据
 -- ----------------------------
 insert into sys_role_dept values ('2', '100');
-insert into sys_role_dept values ('2', '101');
-insert into sys_role_dept values ('2', '105');
 
 -- ----------------------------
 -- 9、用户与岗位关联表  用户1-N岗位
