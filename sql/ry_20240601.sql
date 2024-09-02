@@ -115,7 +115,7 @@ create table sys_role (
 -- ----------------------------
 insert into sys_role values('1', '超级管理员', 'admin',  1, 1, '0', '0', 'admin', sysdate(), '', null, '超级管理员');
 insert into sys_role values('2', '教师',   'teacher', 2, 2, '0', '0', 'admin', sysdate(), '', null, '普通角色');
-insert into sys_role values('2', '学生',   'student', 3, 3, '0', '0', 'admin', sysdate(), '', null, '普通角色');
+insert into sys_role values('3', '学生',   'student', 3, 3, '0', '0', 'admin', sysdate(), '', null, '普通角色');
 
 
 -- ----------------------------

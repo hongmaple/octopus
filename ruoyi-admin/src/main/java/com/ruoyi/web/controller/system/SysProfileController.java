@@ -79,6 +79,9 @@ public class SysProfileController extends BaseController
     public AjaxResult resetPwd(String oldPassword, String newPassword)
     {
         SysUser user = getSysUser();
+        if (user.isAdmin()) {
+            return error("不允许修改超级管理员密码");
+        }
         if (!passwordService.matches(user, oldPassword))
         {
             return error("修改密码失败，旧密码错误");
