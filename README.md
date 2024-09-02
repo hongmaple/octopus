@@ -1,38 +1,58 @@
 <p align="center">
 	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-dd77653d7c9f197dd9d93684f3c8dcfbab6.png">
 </p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi v4.7.9</h1>
-<h4 align="center">基于SpringBoot开发的轻量级Java快速开发框架</h4>
-<p align="center">
-	<a href="https://gitee.com/y_project/RuoYi/stargazers"><img src="https://gitee.com/y_project/RuoYi/badge/star.svg?theme=gvp"></a>
-	<a href="https://gitee.com/y_project/RuoYi"><img src="https://img.shields.io/badge/RuoYi-v4.7.9-brightgreen.svg"></a>
-	<a href="https://gitee.com/y_project/RuoYi/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
-</p>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">octopus v4.7.9</h1>
 
-## 平台简介
+#### 提供部署，定制服务，有需要的加v mapleCx331
 
-一直想做一款后台管理系统，看了很多优秀的开源项目但是发现没有合适的。于是利用空闲休息时间开始自己写了一套后台系统。如此有了若依。她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA。所有前端后台代码封装过后十分精简易上手，出错概率低。同时支持移动客户端访问。系统会陆续更新一些实用功能。
+* 阿里云服务器优惠：[点我进入](https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=yclv4x57)，腾讯云产品优惠：[点我进入](https://curl.qcloud.com/ZHPbMWTl)&nbsp;&nbsp;
+* 阿里云618：[点我领取](https://www.aliyun.com/minisite/goods?userCode=yclv4x57)，腾讯云618：[点我领取](https://curl.qcloud.com/6znbHFOM)&nbsp;&nbsp;
 
-性别男，若依是给女儿取的名字（寓意：你若不离不弃，我必生死相依）
+#### 介绍
+octopus高校教学综合平台，主要用于对教师，学生，管理的信息管理，课程管理，专业信息管理，班级管理，可以添加题库，可以上传下载教学资料，可以设置考试试卷，可以进行在线考试和自动评分
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+#### 软件架构
+1、系统环境
 
-* 前后端分离版本，请移步[RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
-* 感谢 [hplus](https://gitee.com/hplus_admin/hplus) 后台主题 UI 框架。
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
-* 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
+单体项目
+
+Java EE 8
+
+Servlet 3.0
+
+Apache Maven 3
+
+2、主框架
+
+Spring Boot 2.2.x
+
+Spring Framework 5.2.x
+
+Apache Shiro 1.7 3、持久层
+
+Apache MyBatis 3.5.x
+
+Hibernate Validation 6.0.x
+
+Alibaba Druid 1.2.x
+
+4、视图层
+
+Bootstrap 3.3.7
+
+Thymeleaf 3.0.x
 
 ## 内置功能
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
+1. 用户管理：用户是系统操作者，该功能主要完成系统用户配置。
+2. 部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
+3. 岗位管理：配置系统用户所属担任职务。
+4. 菜单管理：配置系统菜单，操作权限，按钮权限标识等。
+5. 角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
+6. 字典管理：对系统中经常使用的一些较为固定的数据进行维护。
+7. 参数管理：对系统动态配置常用参数。
+8. 通知公告：系统通知公告信息发布维护。
+9. 操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
 10. 登录日志：系统登录日志记录查询包含登录异常。
 11. 在线用户：当前系统中活跃用户状态监控。
 12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
@@ -42,13 +62,14 @@
 16. 缓存监控：对系统的缓存查询，删除、清空等操作。
 17. 在线构建器：拖动表单元素生成相应的HTML代码。
 18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+19. 教务管理：学生，教师信息处理，班级，课程，专业，教室，题库，考试等功能
 
 ## 在线体验
 
 - admin/admin123  
 - 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
 
-演示地址：http://ruoyi.vip  
+演示地址：http://www.hongmaple.top/octopus/
 文档地址：http://doc.ruoyi.vip
 
 ## 演示图
@@ -97,6 +118,56 @@
 </table>
 
 
-## 若依交流群
+#用户类型
 
-QQ群： [![加入QQ群](https://img.shields.io/badge/已满-1389287-blue.svg)](https://jq.qq.com/?_wv=1027&k=5HBAaYN)  [![加入QQ群](https://img.shields.io/badge/已满-1679294-blue.svg)](https://jq.qq.com/?_wv=1027&k=5cHeRVW)  [![加入QQ群](https://img.shields.io/badge/已满-1529866-blue.svg)](https://jq.qq.com/?_wv=1027&k=53R0L5Z)  [![加入QQ群](https://img.shields.io/badge/已满-1772718-blue.svg)](https://jq.qq.com/?_wv=1027&k=5g75dCU)  [![加入QQ群](https://img.shields.io/badge/已满-1366522-blue.svg)](https://jq.qq.com/?_wv=1027&k=58cPoHA)  [![加入QQ群](https://img.shields.io/badge/已满-1382251-blue.svg)](https://jq.qq.com/?_wv=1027&k=5Ofd4Pb)  [![加入QQ群](https://img.shields.io/badge/已满-1145125-blue.svg)](https://jq.qq.com/?_wv=1027&k=5yugASz)  [![加入QQ群](https://img.shields.io/badge/已满-86752435-blue.svg)](https://jq.qq.com/?_wv=1027&k=5Rf3d2P)  [![加入QQ群](https://img.shields.io/badge/已满-134072510-blue.svg)](https://jq.qq.com/?_wv=1027&k=5ZIjaeP)  [![加入QQ群](https://img.shields.io/badge/已满-210336300-blue.svg)](https://jq.qq.com/?_wv=1027&k=5CJw1jY)  [![加入QQ群](https://img.shields.io/badge/已满-339522636-blue.svg)](https://jq.qq.com/?_wv=1027&k=5omzbKc)  [![加入QQ群](https://img.shields.io/badge/已满-130035985-blue.svg)](https://jq.qq.com/?_wv=1027&k=qPIKBb7s)  [![加入QQ群](https://img.shields.io/badge/已满-143151071-blue.svg)](https://jq.qq.com/?_wv=1027&k=4NsjKbtU)  [![加入QQ群](https://img.shields.io/badge/已满-158781320-blue.svg)](https://jq.qq.com/?_wv=1027&k=VD2pkz2G)  [![加入QQ群](https://img.shields.io/badge/已满-201531282-blue.svg)](https://jq.qq.com/?_wv=1027&k=HlshFwkJ)  [![加入QQ群](https://img.shields.io/badge/已满-101526938-blue.svg)](https://jq.qq.com/?_wv=1027&k=0ARRrO9V)  [![加入QQ群](https://img.shields.io/badge/已满-264355400-blue.svg)](https://jq.qq.com/?_wv=1027&k=up9k3ZXJ)  [![加入QQ群](https://img.shields.io/badge/已满-298522656-blue.svg)](https://jq.qq.com/?_wv=1027&k=540WfdEr)  [![加入QQ群](https://img.shields.io/badge/已满-139845794-blue.svg)](https://jq.qq.com/?_wv=1027&k=ss91fC4t)  [![加入QQ群](https://img.shields.io/badge/已满-185760789-blue.svg)](https://jq.qq.com/?_wv=1027&k=Cqd66IKe) [![加入QQ群](https://img.shields.io/badge/已满-175104288-blue.svg)](https://jq.qq.com/?_wv=1027&k=7FplYUnR) [![加入QQ群](https://img.shields.io/badge/已满-174942938-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=lqMHu_5Fskm7H2S1vNAQTtzAUokVydwc&authKey=ptw0Fpch5pbNocML3CIJKKqZBaq2DI7cusKuzIgfMNiY3t9Pvd9hP%2BA8WYx3yaY1&noverify=0&group_code=174942938) [![加入QQ群](https://img.shields.io/badge/287843737-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=blYlRDmwZXSXI5pVrPPU7ZJ1stFJ6Q2Q&authKey=ForGBWffHVlPt9NE3d7g4DoOIouBh%2BqvAj2lp1CLReHfZAUaK7SRrdwsChKpRJDJ&noverify=0&group_code=287843737)
+管理员，教师，学生
+
+
+#### 安装教程
+
+下载后用iade打开HtxkEmsm，引入依赖
+
+导入sql HtxkEmsm/sql 创建数据库 数据库名为mapleemsmplus
+
+在application-druid.yml配置数据库连接
+
+在application配置
+
+ruoyi:
+# 名称
+name: RuoYi
+# 版本
+version: 4.1.0
+# 版权年份
+copyrightYear: 2019
+# 实例演示开关
+demoEnabled: false
+# 文件路径 示例（ Windows配置D:/HtxkEmsm/uploadPath，Linux配置 /home/HtxkEmsm/uploadPath）
+profile: E:/GitWarehouse/octopus/files/HtxkEmsm/uploadPath
+# 获取ip地址开关
+addressEnabled: true
+4.在logback.xml中配置
+
+  <!-- 日志存放路径 -->
+    <property name="log.path" value="/home/HtxkEmsm/logs"/>
+5.启动MapleApplication
+
+6.启动成功后访问localhost:8888 管理员admin/admin123
+
+## 联系我，提供部署定制服务
+wx: mapleCx331   qq群：[![加入QQ群](https://img.shields.io/badge/628043364-blue.svg)](https://qm.qq.com/q/RuCfOyaOUm)
+
+## 开源不易，谢谢打赏
+<table>
+ <td>
+   <tr><img style="height: 150px;width: 100px" src="https://gitee.com/hongmaple/netdisk/raw/master/image/wxPay.jpg" alt=""/></tr>
+   <tr><img style="height: 150px;width: 100px" src="https://gitee.com/hongmaple/netdisk/raw/master/image/zfb.jpg" alt=""/></tr>
+ </td>
+</table>
+
+#### 参与贡献
+
+1.  Fork 本仓库
+2.  新建 Feat_xxx 分支
+3.  提交代码
+4.  新建 Pull Request
