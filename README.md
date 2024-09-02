@@ -125,9 +125,9 @@ Thymeleaf 3.0.x
 
 #### 安装教程
 
-下载后用iade打开HtxkEmsm，引入依赖
+下载后用iade打开octopus，引入依赖
 
-导入sql HtxkEmsm/sql 创建数据库 数据库名为mapleemsmplus
+导入sql /sql 创建数据库 数据库名为maple-edu
 
 在application-druid.yml配置数据库连接
 
@@ -142,14 +142,14 @@ version: 4.1.0
 copyrightYear: 2019
 # 实例演示开关
 demoEnabled: false
-# 文件路径 示例（ Windows配置D:/HtxkEmsm/uploadPath，Linux配置 /home/HtxkEmsm/uploadPath）
-profile: E:/GitWarehouse/octopus/files/HtxkEmsm/uploadPath
+# 文件路径 示例（ Windows配置D:/data/octopus/uploadPath，Linux配置 /data/octopus/uploadPath）
+profile: D:/data/octopus/uploadPath
 # 获取ip地址开关
 addressEnabled: true
 4.在logback.xml中配置
 
   <!-- 日志存放路径 -->
-    <property name="log.path" value="/home/HtxkEmsm/logs"/>
+    <property name="log.path" value="/data/octopus/logs"/>
 5.启动MapleApplication
 
 6.启动成功后访问localhost:8888 管理员admin/admin123

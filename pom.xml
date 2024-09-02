@@ -7,9 +7,9 @@
     <artifactId>ruoyi</artifactId>
     <version>4.7.9</version>
 
-    <name>ruoyi</name>
-    <url>http://www.ruoyi.vip</url>
-    <description>若依管理系统</description>
+    <name>octopus</name>
+    <url>http://www.hongmaple.top</url>
+    <description>octopus教育系统</description>
     
     <properties>
         <ruoyi.version>4.7.9</ruoyi.version>

@@ -16,10 +16,10 @@ ruoyi:
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 80
+  port: 8888
   servlet:
     # 应用的访问路径
-    context-path: /
+    context-path: /octopus
   tomcat:
     # tomcat的URI编码
     uri-encoding: UTF-8
