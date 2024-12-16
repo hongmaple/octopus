@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <th:block th:include="include :: header('新增试卷')"/>
-    <th:block th:include="include :: jquery-steps-css"/>
+    <th:block th:include="include :: jquery-smartwizard-css"/>
     <style>
         .content {
             height: 250px;
@@ -207,7 +207,7 @@
     </div>
 </div>
 <th:block th:include="include :: footer"/>
-<th:block th:include="include :: jquery-steps-js"/>
+<th:block th:include="include :: jquery-smartwizard-js"/>
 <script th:inline="javascript">
     var prefix = ctx + "edu/paper"
     var editFlag = [[${@permission.hasPermi('edu:question:edit')}]];
